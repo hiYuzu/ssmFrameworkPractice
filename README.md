@@ -1,0 +1,2 @@
+# ssmFrameworkPractice
+Spring+SpringMVC+MyBatis
