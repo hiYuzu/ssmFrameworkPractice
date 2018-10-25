@@ -1,5 +1,3 @@
-document.write("<script language='JavaScript' src='jquery.min.js'></script>");
-
 function showMap() {
     var map = new BMap.Map("allmap");
     map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
@@ -14,14 +12,17 @@ function showMap() {
 }
 
 function showUser() {
-    alert("go!");
     $.ajax({
         url: "../UserController/queryUsers",
-        type: "post",
+        type: "get",
         dataType: "json",
+        contextType:"",
         success: function (json) {
             alert("1");
             alert(json);
+        },
+        error: function () {
+            alert("no!");
         }
     });
 }
