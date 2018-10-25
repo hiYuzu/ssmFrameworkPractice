@@ -40,10 +40,10 @@ public class TestController {
     public void getUsersTest() throws Exception {
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/UserController/queryUsers");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-        MockHttpServletRequest request = result.getRequest();
+        String str = result.getResponse().getContentAsString();
         System.out.println("success");
         System.out.println("-----------------------------------");
-        System.out.println(request);
+        System.out.println(str);
         System.out.println("-----------------------------------");
     }
 }
