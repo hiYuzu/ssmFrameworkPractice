@@ -12,6 +12,8 @@ import com.zxy.ssm.model.UserModel;
 import com.zxy.ssm.model.ResultListModel;
 import com.zxy.ssm.pojo.User;
 import com.zxy.ssm.service.IUserService;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -39,7 +41,8 @@ public class UserController {
      * @author yuzu
      * @date 2018/9/29 13:20
      */
-    @RequestMapping("/queryUsers")
+    @RequestMapping(value = "/queryUsers", method = {RequestMethod.GET})
+    @ResponseBody
     public ResultListModel<UserModel> queryUsers() {
         ResultListModel<UserModel> resultListModel = new ResultListModel<UserModel>();
         List<UserModel> listUserModel = new ArrayList<UserModel>();
