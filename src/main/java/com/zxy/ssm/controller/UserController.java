@@ -76,7 +76,7 @@ public class UserController {
             user.setUserName(userModel.getUserName());
             user.setUserSex(userModel.getUserSex());
             user.setUserAge(Integer.parseInt(userModel.getUserAge()));
-            user.setUserTel(Integer.parseInt(userModel.getUserTel()));
+            user.setUserTel(userModel.getUserTel());
         }
         return user;
     }

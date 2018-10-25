@@ -6,6 +6,6 @@
 </head>
 <body>
 <h1>hello web!</h1>
-<jsp:forward page="WEB-INF/view/jsp/showStudents.jsp" />
+<jsp:forward page="/WEB-INF/view/html/main.html" />
 </body>
 </html>

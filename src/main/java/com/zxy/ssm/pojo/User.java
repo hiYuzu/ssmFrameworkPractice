@@ -14,7 +14,7 @@ public class User {
 	private String userName;
 	private String userSex;
 	private int userAge;
-	private int userTel;
+	private String userTel;
 
 	public int getUserId() {
 		return userId;
@@ -48,11 +48,11 @@ public class User {
 		this.userAge = userAge;
 	}
 
-	public int getUserTel() {
+	public String getUserTel() {
 		return userTel;
 	}
 
-	public void setUserTel(int userTel) {
+	public void setUserTel(String userTel) {
 		this.userTel = userTel;
 	}
 }
