@@ -15,7 +15,7 @@ function showUser() {
     var url = "static/map.json";
     var url1 = "/UserController/queryUsers";
     $.ajax({
-        url: url,
+        url: url1,
         type: "get",
         dataType: "json",
         success: function (json) {
