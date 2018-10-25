@@ -19,10 +19,9 @@ public interface IUserService {
 	 *</p>
 	 *@author yuzu
 	 *@date 2018/9/29 13:09
-	 *@param user
 	 *@return
 	 */
-	int getCount(User user);
+	int getCount();
 	 
 	/**
 	 *<p>
@@ -30,8 +29,7 @@ public interface IUserService {
 	 *</p>
 	 *@author yuzu
 	 *@date 2018/9/29 13:10
-	 *@param user
 	 *@return
 	 */
-	 List<User> getUsers(User user);
+	 List<User> getUsers();
 }

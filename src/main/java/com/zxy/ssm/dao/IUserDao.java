@@ -2,7 +2,6 @@ package com.zxy.ssm.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 
 import com.zxy.ssm.pojo.User;
 
@@ -21,10 +20,9 @@ public interface IUserDao {
 	 *</p>
 	 *@author yuzu
 	 *@date 2018/10/11 8:28
-	 *@param user
 	 *@return
 	 */
-	public int getCount(@Param("user") User user);
+	int getCount();
 	
 	/**
 	 *<p>
@@ -32,8 +30,7 @@ public interface IUserDao {
 	 *</p>
 	 *@author yuzu
 	 *@date 2018/10/11 8:30
-	 *@param user
 	 *@return
 	 */
-	public List<User> getUser(@Param("user") User user);
+	List<User> getUser();
 }

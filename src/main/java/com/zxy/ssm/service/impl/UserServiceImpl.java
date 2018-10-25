@@ -25,12 +25,12 @@ public class UserServiceImpl implements IUserService {
 	private IUserDao userDao;
 	
 	@Override
-	public int getCount(User user) {
-		return userDao.getCount(user);
+	public int getCount() {
+		return userDao.getCount();
 	}
 	
 	@Override
-	public List<User> getUsers(User user) {
-		return userDao.getUser(user);
+	public List<User> getUsers() {
+		return userDao.getUser();
 	}
  }

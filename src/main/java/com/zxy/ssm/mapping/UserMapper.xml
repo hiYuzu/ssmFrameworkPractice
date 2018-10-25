@@ -14,52 +14,15 @@
 	<select id="getCount" resultType="java.lang.Integer">
 		SELECT COUNT(0)
 		FROM tbl_user
-		<where>
-			<if test="user.userId != -1">
-				AND tbl_user.user_id = #{user.userId, jdbcType = INTEGER}
-			</if>
-			<if test="user.userName != null and user.userName != ''">
-				AND tbl_user.user_name = #{user.userName, jdbcType = VARCHAR}
-			</if>
-			<if test="user.userSex != null and user.userSex != ''">
-				AND tbl_user.user_sex = #{user.userSex, jdbcType = VARCHAR}
-			</if>
-			<if test="user.userAge != null and user.userAge != ''">
-				AND tbl_user.user_age = #{user.userAge, jdbcType = INTEGER}
-			</if>
-			<if test="user.userSex != null and user.userSex != ''">
-				AND tbl_user.user_tel = #{user.userTel, jdbcType = INTEGER}
-			</if>
-		</where>
 	</select>
 	<!-- 查询User数据操作 -->
 	<select id="getUser" resultMap="userResultMap">
 		SELECT
-		tbl_user.user_id,
-		tbl_user.user_name,
-		tbl_user.user_sex,
-		tbl_user.user_age,
-		tbl_user.user_tel,
+		user_id,
+		user_name,
+		user_sex,
+		user_age,
+		user_tel
 		FROM tbl_user
-		<where>
-			<if test="user.userId != -1">
-				AND tbl_user.user_id = #{user.userId, jdbcType = INTEGER}
-			</if>
-			<if test="user.userName != null and user.userName != ''">
-				AND tbl_user.user_name = #{user.userName, jdbcType = VARCHAR}
-			</if>
-			<if test="user.userSex != null and user.userSex != ''">
-				AND tbl_user.user_sex = #{user.userSex,jdbcType = VARCHAR}
-			</if>
-			<if test="user.userAge != null and user.userAge != ''">
-				AND tbl_user.user_age = #{user.userId, jdbcType = INTEGER}
-			</if>
-			<if test="user.userTel != null and user.userTel != ''">
-				AND tbl_user.user_tel = #{user.userTel, jdbcType = INTEGER}
-			</if>
-			<if test="user.rowCount != -1 and user.rowIndex != -1">
-				LIMIT #{user.rowIndex, jdbcType = INTEGER},#{user.rowCount,jdbcType = INTEGER}
-			</if>
-		</where>
 	</select>
 </mapper>

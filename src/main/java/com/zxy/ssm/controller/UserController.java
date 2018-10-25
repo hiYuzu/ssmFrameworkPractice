@@ -5,10 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zxy.ssm.model.UserModel;
 import com.zxy.ssm.model.ResultListModel;
@@ -27,14 +25,6 @@ import com.zxy.ssm.service.IUserService;
 @RequestMapping("/UserController")
 public class UserController {
     /**
-     * 日志输出标记
-     */
-    private static final String LOG = "UserController";
-    /**
-     * 声明日志对象
-     */
-    private static Logger logger = Logger.getLogger(UserController.class);
-    /**
      * 声明服务
      */
     @Resource
@@ -43,22 +33,20 @@ public class UserController {
     /**
      * <p>
      *
-     * @param usermodel
      * @return
      * @Description: 查询user信息
      * </p>
      * @author yuzu
      * @date 2018/9/29 13:20
      */
-    @RequestMapping(value = "/queryUsers", method = {RequestMethod.POST})
-    public ResultListModel<UserModel> queryUsers(UserModel usermodel) {
+    @RequestMapping("/queryUsers")
+    public ResultListModel<UserModel> queryUsers() {
         ResultListModel<UserModel> resultListModel = new ResultListModel<UserModel>();
         List<UserModel> listUserModel = new ArrayList<UserModel>();
-        List<User> listUser = new ArrayList<User>();
-        User user = convertUser(usermodel);
-        int count = userService.getCount(user);
+        List<User> listUser;
+        int count = userService.getCount();
         if (count > 0) {
-            listUser = userService.getUsers(user);
+            listUser = userService.getUsers();
             for (User temp : listUser) {
                 UserModel userModel = convertUserModel(temp);
                 if (userModel != null) {
