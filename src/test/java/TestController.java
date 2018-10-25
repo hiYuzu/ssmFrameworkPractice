@@ -41,7 +41,7 @@ public class TestController {
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/UserController/queryUsers");
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
         MockHttpServletRequest request = result.getRequest();
-        System.out.println("成功");
+        System.out.println("success");
         System.out.println("-----------------------------------");
         System.out.println(request);
         System.out.println("-----------------------------------");
