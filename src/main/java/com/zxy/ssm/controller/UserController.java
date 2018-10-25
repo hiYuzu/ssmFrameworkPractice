@@ -42,8 +42,8 @@ public class UserController {
      * @date 2018/9/29 13:20
      */
     @RequestMapping(value = "/queryUsers", method = {RequestMethod.GET})
-    @ResponseBody
-    public ResultListModel<UserModel> queryUsers() {
+
+    public @ResponseBody ResultListModel<UserModel> queryUsers() {
         ResultListModel<UserModel> resultListModel = new ResultListModel<UserModel>();
         List<UserModel> listUserModel = new ArrayList<UserModel>();
         List<User> listUser;
