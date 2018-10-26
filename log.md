@@ -27,3 +27,7 @@ js无法通过ajax获取后台数据
 1.配置文件
 
 2.url路径
+
+>2018.10.26 13:07
+
+解决了js无法通过ajax获取后台数据的问题，原因是spring-mvc.xml配置文件中servlet-name不一致。
