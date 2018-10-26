@@ -12,18 +12,13 @@ function showMap() {
 }
 
 function showUser() {
-    var url = "static/map.json";
     var url1 = "/UserController/queryUsers";
     $.ajax({
         url: url1,
         type: "get",
         dataType: "json",
         success: function (json) {
-            alert("1");
             alert(JSON.stringify(json));
-        },
-        error: function () {
-            alert("no!");
         }
     });
 }

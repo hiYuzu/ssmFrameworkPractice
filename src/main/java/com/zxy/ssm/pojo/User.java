@@ -15,6 +15,8 @@ public class User {
 	private String userSex;
 	private int userAge;
 	private String userTel;
+	private String userEmail;
+	private String userPwd;
 
 	public int getUserId() {
 		return userId;
@@ -54,5 +56,21 @@ public class User {
 
 	public void setUserTel(String userTel) {
 		this.userTel = userTel;
+	}
+
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
+	public String getUserPwd() {
+		return userPwd;
+	}
+
+	public void setUserPwd(String userPwd) {
+		this.userPwd = userPwd;
 	}
 }

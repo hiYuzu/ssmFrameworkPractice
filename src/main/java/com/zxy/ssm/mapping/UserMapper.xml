@@ -9,6 +9,8 @@
 		<result property="userSex" column="user_sex" />
 		<result property="userAge" column="user_age" />
 		<result property="userTel" column="user_tel" />
+		<result property="userEmail" column="user_email" />
+		<result property="userPwd" column="user_pwd" />
 	</resultMap>
 	<!-- 查询数据个数 -->
 	<select id="getCount" resultType="java.lang.Integer">
@@ -22,7 +24,9 @@
 		user_name,
 		user_sex,
 		user_age,
-		user_tel
+		user_tel,
+		user_email,
+		user_pwd
 		FROM tbl_user
 	</select>
 </mapper>

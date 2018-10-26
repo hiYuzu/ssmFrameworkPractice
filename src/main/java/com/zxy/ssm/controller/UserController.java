@@ -80,6 +80,8 @@ public class UserController {
             user.setUserSex(userModel.getUserSex());
             user.setUserAge(Integer.parseInt(userModel.getUserAge()));
             user.setUserTel(userModel.getUserTel());
+            user.setUserEmail(userModel.getUserEmail());
+            user.setUserPwd(userModel.getUserPwd());
         }
         return user;
     }
@@ -101,7 +103,9 @@ public class UserController {
             userModel.setUserName(user.getUserName());
             userModel.setUserSex(user.getUserSex());
             userModel.setUserAge(String.valueOf(user.getUserAge()));
-            userModel.setUserTel(String.valueOf(user.getUserTel()));
+            userModel.setUserTel(user.getUserTel());
+            userModel.setUserEmail(user.getUserEmail());
+            userModel.setUserPwd(user.getUserPwd());
         }
         return userModel;
     }
