@@ -4,30 +4,34 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <style type="text/css">
-        body, html, #allmap {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        body, html {
             margin: 0;
-            font-family: "微软雅黑";
+            padding: 0;
+            background-color: #66ccff;
+            text-align: center;
         }
+
+        .center-in-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
     </style>
-
     <link rel="stylesheet" href="static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-
-    <script type="text/javascript" src="static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=z2VcOxCmzMMCuiYs0LPYDmRD"></script>
-    <script type="text/javascript" src="static/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
-    <title>地图展示</title>
+    <title>Welcome To My Blog</title>
 </head>
 <body>
-<span>
-    <button id="showMap" class="btn btn-primary" onclick="showMap()">展示地图</button>
-    <button id="showUser" class="btn btn-primary" onclick="showUser()">USER信息</button>
-</span>
-
-<div id="allmap"></div>
+<button type="submit" class="center-in-center btn btn-info btn-lg" onclick="go()">进入</button>
 </body>
-<script type="text/javascript" src="static/js/map.js"></script>
+<script type="text/javascript">
+    function go() {
+        window.location.href = "static/html/main.html";
+    }
+</script>
 </html>
