@@ -4,6 +4,7 @@
       <w>gson</w>
       <w>introspector</w>
       <w>sqljdbc</w>
+      <w>yuzu</w>
     </words>
   </dictionary>
 </component>
