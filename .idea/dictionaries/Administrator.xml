@@ -2,6 +2,7 @@
   <dictionary name="Administrator">
     <words>
       <w>gson</w>
+      <w>introspector</w>
       <w>sqljdbc</w>
     </words>
   </dictionary>

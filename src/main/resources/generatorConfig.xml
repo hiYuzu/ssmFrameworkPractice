@@ -14,7 +14,7 @@
         </commentGenerator>
         <!--数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        connectionURL="jdbc:mysql://localhost:3306/test_sql"
                         userId="root"
                         password="root" />
         <!--类型转换-->
@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!--pojo-->
-        <javaModelGenerator targetPackage="com.zxy.crud.pojo" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.zxy.ssm.pojo" targetProject="src/main/java">
             <!--是否让schema作为包的后缀-->
             <property name="enableSubPackages" value="false" />
             <!--从数据库返回的值被清理前后的空格-->
@@ -32,16 +32,16 @@
         </javaModelGenerator>
 
         <!--mapper.xml-->
-        <sqlMapGenerator targetPackage="com.zxy.crud.mapping" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.zxy.ssm.mapping" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
         <!--dao-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zxy.crud.dao" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zxy.ssm.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
         <!--指定数据库表-->
-        <table schema="" tableName="tbl_students" />
+        <table schema="" tableName="tbl_user" />
     </context>
 </generatorConfiguration>
