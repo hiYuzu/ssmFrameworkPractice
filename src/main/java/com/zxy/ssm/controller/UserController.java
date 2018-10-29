@@ -57,6 +57,8 @@ public class UserController {
                 }
             }
             resultListModel.setRows(listUserModel);
+            resultListModel.setResult(true);
+            resultListModel.setDetail("success");
         }
         resultListModel.setTotal(count);
         return resultListModel;
