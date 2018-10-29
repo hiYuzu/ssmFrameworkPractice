@@ -1,30 +1,552 @@
 <!DOCTYPE html>
 <html>
+<meta http-equiv="content-type" content="text/html" charset="UTF-8">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
-    <style type="text/css">
-        body, html, #allmap {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-            font-family: "微软雅黑";
-        }
-    </style>
 
-    <link rel="stylesheet" href="/static/js/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
 
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=z2VcOxCmzMMCuiYs0LPYDmRD"></script>
-    <script type="text/javascript" src="/static/js/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-    <title>地图展示</title>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!--webFont-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
+          rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/static/js/move-top.js"></script>
+    <script type="text/javascript" src="/static/js/easing.js"></script>
+    <script type="text/javascript" src="/static/js/FileSaver.js"></script>
+    <script type="text/javascript" src="/static/js/getMessage.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+            });
+        });
+    </script>
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=z2VcOxCmzMMCuiYs0LPYDmRD"></script>-->
+    <!--<script type="text/javascript" src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>-->
+
+    <title>MyResume</title>
 </head>
 <body>
-<button class="btn btn-info" onclick="getData()">获取数据库User信息</button>
-<div id="allmap"></div>
+<div class="header">
+    <div class="header-banner">
+        <div class="container">
+            <div class="top-menu">
+                <span class="menu"></span>
+                <ul>
+                    <li><a href="#ABOUT" class="scroll">个人资料</a></li>
+                    <li><a href="#WORK" class="scroll">实习经历</a></li>
+                    <li><a href="#HONOR" class="scroll">在校荣誉</a></li>
+                    <li><a href="#CONTACT" class="scroll">联系我</a></li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <!--script-nav-->
+            <script>
+                $("span.menu").click(function () {
+                    $(".top-menu ul").slideToggle("slow", function () {
+                    });
+                });
+            </script>
+            <div class="header-banner-info text-center">
+                <a href="javascript:void(0);"><img src="/static/images/logo.png" alt=""/></a>
+                <h3>你好</h3>
+                <h1>我是 <span>赵晓阳,</span></h1>
+                <p>一名就读于天津理工大学的大四学生</p>
+                <span class="line"></span>
+                <label></label>
+                <ul class="details">
+                    <li>年龄 : <a href="javascript:void(0);">21</a></li>
+                    <li>学历 : <a href="javascript:void(0);">本科</a></li>
+                    <li>意向 : <a href="javascript:void(0);">Java</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    <!-- about-section-starts -->
+    <div class="about-section" id="ABOUT">
+        <div class="container">
+            <div class="about-section-head text-center">
+                <img src="/static/images/head.png" alt=""/>
+                <h3>个人资料</h3>
+                <label></label>
+                <p>NOW YOU KNOW ME</p>
+            </div>
+            <div class="about-section-grids">
+                <div class="col-md-4 about-section-grid-1">
+                    <h4>自我介绍</h4>
+                    <p>我是赵晓阳，1997年1月生人，本科毕业于天津理工大学通信工程专业。</p>
+                    <p>使用过<label>Spring+SpringMVC+MyBatis+SpringBoot</label>框架。</p>
+                    <p>数据库方面对<label>MySQL</label>较为熟悉，有使用Redis的经验。</p>
+                    <p>我的专业非计算机，初二最开始接触的编程语言——Pascal，期间学习过C和汇编语言，2018年年初开始自学Java。</p>
+                    <p>熟练使用Office和Adobe软件，对各类软件应用能力高，上手速度快。</p>
+                    <p>拥有三年学生工作经验，两年学生组织领导经验。</p>
+                    <p>高<label>学习</label>能力&nbsp;+&nbsp;高<label>适应</label>能力&nbsp;+&nbsp;高<label>执行</label>能力&nbsp;+&nbsp;高<label>协调</label>能力</p>
+                </div>
+                <div class="col-md-4 about-section-grid-2 text-center">
+                    <img src="/static/images/myPhoto.jpg" class="img-responsive" alt=""/>
+                </div>
+                <div class="col-md-4 about-section-grid-3">
+                    <h4>专业技能</h4>
+                    <p>后端</p>
+                    <div class="progress-grid">
+                        <div class="meter red">
+							  <span style="width:90%;">
+							 	<div class="progress_desc">JAVA</div>
+								<div class="percent">90%</div>
+						    <div class="clearfix"></div>
+						    </span>
+                        </div>
+                        <div class="meter animate">
+							  <span style="width:85%;"><div class="progress_desc">SpringBoot+SSM</div>
+								<div class="percent">85%</div>
+						    <div class="clearfix"></div>
+							  </span>
+                        </div>
+                        <div class="meter">
+								<span style="width:80%;"><div class="progress_desc">数据库</div>
+								 <div class="percent">80%</div>
+								 <div class="clearfix"></div>
+							  </span>
+                        </div>
+                    </div>
+                    <p>前端</p>
+                    <div class="progress-grid">
+                        <div class="meter red">
+							  <span style="width:90%;">
+							 	<div class="progress_desc">HTML / HTML5</div>
+								<div class="percent">90%</div>
+						    <div class="clearfix"></div>
+						    </span>
+                        </div>
+                        <div class="meter animate">
+							  <span style="width:85%;"><div class="progress_desc">JavaScript / JQuery</div>
+								<div class="percent">85%</div>
+						    <div class="clearfix"></div>
+							  </span>
+                        </div>
+                        <div class="meter">
+								<span style="width:85%;"><div class="progress_desc">软件应用</div>
+								 <div class="percent">85%</div>
+								 <div class="clearfix"></div>
+							  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="portfolio-section" id="WORK">
+        <div class="portfolio-section-top-row">
+            <div class="container">
+                <div class="portfolio-section-head text-center">
+                    <h3>实习经历</h3>
+                    <label></label>
+                    <p>my exprience</p>
+                </div>
+                <div class="col-md-4 portfolio-section-top-row-left-grid">
+                    <div class="project-name">
+                        <span>项目名称</span>
+                        <h3>综合环境在线监控报警系统</h3>
+                    </div>
+                    <div class="project-description">
+                        <span>项目简介</span>
+                        <ul>
+                            <li>站点管控</li>
+                            <li>监控物质实时信息</li>
+                            <li>实时报警</li>
+                        </ul>
+                        <p>在线实时监控各站点检测物质情况，将数据规范化、可视化，并提供数据统计信息与报警信息。</p>
+                    </div>
+                    <div class="address">
+                        <span>项目地址</span>
+                        <a href="http://114.115.217.241/" target="_blank">http://114.115.217.241/</a>
+                    </div>
+                    <div class="tags">
+                        <span>标签</span>
+                        <p>SSM，JQuery EasyUI，MySQL，实时</p>
+                    </div>
+                </div>
+                <div class="col-md-8 portfolio-section-top-row-right-grid">
+                    <div class="wmuSlider showPic section" id="section-1">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <img src="/static/images/envdust_logIn.jpg" class="img-responsive" alt="">
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            ` <img src="/static/images/envdust_main.jpg" class="img-responsive" alt="">
+                        </article>
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <img src="/static/images/envdust_realTime.jpg" class="img-responsive" alt="">
+                        </article>
+                    </div>
+
+                    <script src="/static/js/jquery.wmuSlider.js"></script>
+                    <script>
+                        $('.showPic').wmuSlider();
+                    </script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="portfolio-section-bottom-row" id="portfolio">
+            <div class="container">
+                <ul id="filters" class="clearfix">
+                    <li><span class="filter active"
+                              data-filter="courseDesign professionalDesign graduationProject internship">所有</span></li>
+                    <li><span class="filter" data-filter="courseDesign">课程设计</span></li>
+                    <li><span class="filter" data-filter="professionalDesign">专业设计</span></li>
+                    <li><span class="filter" data-filter="graduationProject">毕业设计</span></li>
+                    <li><span class="filter" data-filter="internship">实习作品</span></li>
+                </ul>
+                <div id="portfoliolist">
+                    <div class="portfolio internship mix_all wow bounceIn" data-wow-delay="0.4s" data-cat="internship"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">实习作品<br/>综合环境在线监测系统
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio internship mix_all wow bounceIn" data-wow-delay="0.4s" data-cat="internship"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog7"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">实习作品<br/>气体污染监测系统
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio graduationProject mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="graduationProject"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog1"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">毕业设计<br/>我还没做呢</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio professionalDesign mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="professionalDesign"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog2"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">专业设计<br/>基于NB-IOT的GPS定位信息采集以及呼吸灯控制与OLED设计
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio courseDesign mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="courseDesign"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog3"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">课程设计<br/>通信原理课程设计与实践
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio courseDesign mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="courseDesign"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog4"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">课程设计<br/>电子课程设计与实践
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio courseDesign mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="courseDesign"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog5"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">课程设计<br/>数字信号系统课程设计与实践
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portfolio courseDesign mix_all wow bounceIn" data-wow-delay="0.4s"
+                         data-cat="courseDesign"
+                         style="display: inline-block; opacity: 1;">
+                        <div class="portfolio-wrapper">
+                            <a href="#small-dialog6"
+                               class="b-link-stripe b-animate-go thickbox play-icon popup-with-zoom-anim">
+                                <img src="/static/images/pic-1.jpg" class="img-responsive" alt=""/>
+                                <div class="b-wrapper"><h2 class="b-animate b-from-left b-delay03">课程设计<br/>移动通信课程设计与实践
+                                </h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function ($) {
+                        $(".scroll").click(function (event) {
+                            event.preventDefault();
+                            $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1200);
+                        });
+                    });
+                </script>
+                <script type="text/javascript" src="/static/js/jquery.mixitup.min.js"></script>
+                <script type="text/javascript">
+                    $(function () {
+                        var filterList = {
+                            init: function () {
+                                $('#portfoliolist').mixitup({
+                                    targetSelector: '.portfolio',
+                                    filterSelector: '.filter',
+                                    effects: ['fade'],
+                                    easing: 'snap',
+                                    // call the hover effect
+                                    onMixEnd: filterList.hoverEffect()
+                                });
+                            },
+                            hoverEffect: function () {
+                                $('#portfoliolist .portfolio').hover(
+                                    function () {
+                                        $(this).find('.label').stop().animate({bottom: 0}, 200, 'easeOutQuad');
+                                        $(this).find('img').stop().animate({top: -30}, 500, 'easeOutQuad');
+                                    },
+                                    function () {
+                                        $(this).find('.label').stop().animate({bottom: -40}, 200, 'easeInQuad');
+                                        $(this).find('img').stop().animate({top: 0}, 300, 'easeOutQuad');
+                                    }
+                                );
+                            }
+                        };
+                        filterList.init();
+                    });
+                </script>
+                <script type="text/javascript" src="/static/js/modernizr.custom.min.js"></script>
+                <link href="/static/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
+                <script src="/static/js/jquery.magnific-popup.js" type="text/javascript"></script>
+                <!-- //pop-up-box -->
+                <div id="small-dialog" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是综合环境在线监控系统的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog1" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是毕业设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog2" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是大四专业设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog3" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是通信原理课程设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog4" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是电子课程设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog5" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是数字信号处理课程设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog6" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是移动通信课程设计的描述。</p>
+                    </div>
+                </div>
+                <div id="small-dialog7" class="mfp-hide">
+                    <div class="image-top">
+                        <img src="/static/images/pic1.jpg" class="img-responsive" alt=""/>
+                        <p>这里是气体污染检测系统的描述。</p>
+                    </div>
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('.popup-with-zoom-anim').magnificPopup({
+                            type: 'inline',
+                            fixedContentPos: false,
+                            fixedBgPos: true,
+                            overflowY: 'auto',
+                            closeBtnInside: true,
+                            preloader: false,
+                            midClick: true,
+                            removalDelay: 300,
+                            mainClass: 'my-mfp-zoom-in'
+                        });
+
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="blog-section" id="HONOR">
+        <div class="container">
+            <div class="blog-section-head text-center">
+                <h3>在校荣誉</h3>
+                <label></label>
+                <p>2015.09-2019.06</p>
+            </div>
+            <div class="blog-section-grids">
+                <div class="col-md-9 blog-section-left-grid">
+                    <div class="blog-section-banner">
+                        <img src="/static/images/blog.jpg" class="img-responsive" alt=""/>
+                        <h3>大学四年成绩一览</h3>
+                        <span>SEP 2015 - JUN 2018</span>
+                        <p>天津理工大学优秀学生干部&emsp;天津理工大学优秀志愿者</p>
+                        <p>天津理工大学学长助理&emsp;天津理工大学暑期社会实践优秀个人</p>
+                        <p>天津理工大学演讲比赛最佳风采奖&emsp;大创项目：基于北斗的体态检测应急报警系统</p>
+                    </div>
+                </div>
+                <div class="col-md-3 blog-section-right-grid">
+                    <div class="clearfix"></div>
+                    <div class="categories">
+                        <h5>学生组织</h5>
+                        <ul>
+                            <li>
+                                <a href="https://baike.baidu.com/item/%E5%A4%A9%E6%B4%A5%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E5%BF%83%E7%90%86%E5%8D%8F%E4%BC%9A/19488654"
+                                   target="_blank">天津理工大学心理协会</a></li>
+                            <li><a href="javascript:void(0);">计算机与通信工程学院学生会<br/>
+                                <small>(现名：计算机科学与工程学院)</small>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="archives">
+                        <h5>成就</h5>
+                        <ul>
+                            <li><a href="javascript:void(0);">2016年</a></li>
+                            <li><a href="javascript:void(0);">2017年</a></li>
+                            <li><a href="javascript:void(0);">2018年</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="span_4_row">
+                <div class="col-md-3 col">
+                    <img src="/static/images/r4.jpg" class="img-responsive" alt=""/>
+                    <div class="image-text">
+                        <h5>天津理工大学优秀学生干部</h5>
+                        <p>描述</p>
+                        <a href="javascript:void(0);">更多</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col">
+                    <img src="/static/images/r4.jpg" class="img-responsive" alt=""/>
+                    <div class="image-text">
+                        <h5>天津理工大学优秀志愿者</h5>
+                        <p>描述</p>
+                        <a href="javascript:void(0);">更多</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col">
+                    <img src="/static/images/r4.jpg" class="img-responsive" alt=""/>
+                    <div class="image-text">
+                        <h5>天津理工大学学长助理</h5>
+                        <p>描述</p>
+                        <a href="javascript:void(0);">更多</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col">
+                    <img src="/static/images/r4.jpg" class="img-responsive" alt=""/>
+                    <div class="image-text">
+                        <h5>天津理工大学暑期社会实践优秀个人</h5>
+                        <p>描述</p>
+                        <a href="javascript:void(0);">更多</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-section text-center" id="CONTACT">
+        <div class="container">
+            <div class="contact-section-head">
+                <h3>联系</h3>
+                <label></label>
+                <p>留下你想对我说的话吧</p>
+            </div>
+            <div class="contact-info">
+                <ul>
+                    <li><i class="message"></i></li>
+                    <li><a href="mailto:pomelo.yuzu1997@gmail.com">pomelo.yuzu1997@gmail.com</a></li>
+                    <li><i class="phone"></i></li>
+                    <li>176-9598-2286</li>
+                </ul>
+                <form id="messageForm" accept-charset="UTF-8">
+                    <input id="nameInput" type="text" class="text" value="你的名字"
+                           onfocus="if (this.value == '你的名字') this.value = '';"
+                           onblur="if (this.value == '') {this.value = '你的名字';}">
+                    <input id="contactInput" type="text" class="text" value="你的联系方式"
+                           onfocus="if (this.value == '你的联系方式') this.value = '';"
+                           onblur="if (this.value == '') {this.value = '你的联系方式';}">
+                    <textarea id="message" onfocus="if(this.value == '你的留言...') this.value='';"
+                              onblur="if(this.value == '') this.value='你的留言...';">你的留言...</textarea>
+                    <input type="button" value="发送" onclick="getMessage()">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="container">
+        <div class="copy-rights text-center">
+            <p>Powered by Yuzu. Thank you. <a href="javascript:void(0);">简历下载</a></p>
+        </div>
+    </div>
+</div>
+<!-- footer-section-ends -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $().UItoTop({easingType: 'easeOutQuart'});
+
+    });
+</script>
+<a href="/static/data/赵晓阳简历.pdf" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"></span></a>
 </body>
-<script type="text/javascript" src="/static/js/map.js"></script>
-<script type="text/javascript" src="/static/js/getData.js"></script>
 </html>
