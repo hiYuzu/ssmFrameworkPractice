@@ -4,6 +4,7 @@ import com.zxy.ssm.model.ResultListModel;
 import com.zxy.ssm.model.SenderModel;
 import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.service.ISenderService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import java.util.List;
 
 /**
  * <p>
+ *
  * @discription sender留言处理
  * </p>
  * @author: hiYuzu
@@ -62,6 +64,18 @@ public class SenderController {
         resultListModel.setTotal(count);
         return resultListModel;
     }
+
+    /**
+     * <p>
+     *
+     * @return
+     * @Description: 插入sender信息
+     * </p>
+     * @author hiYuzu
+     * @date
+     */
+    @RequestMapping(value = "/insertSenders", method = {RequestMethod.POST})
+
 
     /**
      * <p>
