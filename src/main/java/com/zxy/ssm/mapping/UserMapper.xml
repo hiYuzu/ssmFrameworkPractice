@@ -29,4 +29,11 @@
 		user_pwd
 		FROM tbl_user
 	</select>
+	<!-- 按邮箱查询密码 -->
+	<select id="getPassword" resultType="java.lang.String">
+		SELECT
+		user_pwd
+		FROM tbl_user
+		WHERE user_email = #{email}
+	</select>
 </mapper>

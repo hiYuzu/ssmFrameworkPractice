@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.zxy.ssm.model.ResultModel;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -27,10 +29,51 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/UserController")
 public class UserController {
     /**
+     * 日志输出标记
+     */
+    private static final String LOG = "UserController";
+
+    /**
+     * 声明日志对象
+     */
+    private static Logger logger = Logger.getLogger(UserController.class);
+    /**
      * 声明服务
      */
     @Resource
     private IUserService userService;
+
+    /**
+     * <p>
+     *
+     * @Description 登录验证
+     * </p>
+     * @author hiYuzu
+     * @date 2018/11/5 10:12
+     */
+    @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
+
+    public @ResponseBody
+    ResultModel loginUser(UserModel userModel) {
+        ResultModel resultModel = new ResultModel();
+        if (userModel != null) {
+            try {
+                String pwd = userService.getPassword(userModel.getUserEmail());
+                if (userModel.getUserPwd().equals(pwd)) {
+                    resultModel.setResult(true);
+                    resultModel.setDetail("登录成功");
+                } else {
+                    resultModel.setResult(false);
+                    resultModel.setDetail("登录失败");
+                }
+            } catch (Exception e){
+                resultModel.setResult(false);
+                resultModel.setDetail("登录失败");
+                logger.error(LOG + "登录失败,失败信息：" + e.getMessage());
+            }
+        }
+        return resultModel;
+    }
 
     /**
      * <p>
@@ -43,7 +86,8 @@ public class UserController {
      */
     @RequestMapping(value = "/queryUsers", method = {RequestMethod.GET})
 
-    public @ResponseBody ResultListModel<UserModel> queryUsers() {
+    public @ResponseBody
+    ResultListModel<UserModel> queryUsers() {
         ResultListModel<UserModel> resultListModel = new ResultListModel<UserModel>();
         List<UserModel> listUserModel = new ArrayList<UserModel>();
         List<User> listUser;

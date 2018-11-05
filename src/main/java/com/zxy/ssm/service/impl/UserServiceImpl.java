@@ -12,25 +12,31 @@ import com.zxy.ssm.pojo.User;
 import com.zxy.ssm.service.IUserService;
 
 /**
- *<p>
- *@Description: User操作服务类实现
- *</p>
- *@author yuzu
- *@date 2018/9/29 16:15
+ * <p>
+ *
+ * @author yuzu
+ * @Description: User操作服务类实现
+ * </p>
+ * @date 2018/9/29 16:15
  */
 @Service("userService")
 @Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements IUserService {
-	@Resource 
-	private IUserDao userDao;
-	
-	@Override
-	public int getCount() {
-		return userDao.getCount();
-	}
-	
-	@Override
-	public List<User> getUsers() {
-		return userDao.getUser();
-	}
- }
+    @Resource
+    private IUserDao userDao;
+
+    @Override
+    public int getCount() {
+        return userDao.getCount();
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userDao.getUser();
+    }
+
+    @Override
+    public String getPassword(String email) {
+        return userDao.getPassword(email);
+    }
+}

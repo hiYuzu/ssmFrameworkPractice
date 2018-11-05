@@ -9,7 +9,6 @@ function downTest(mobileCode) {
     if (mobileCode != null) {
         var file = new File([mobileCode], "手机号.txt", {type: "text/plain;charset=utf-8"});
         saveAs(file);
-        alert("!");
     }
 }
 
