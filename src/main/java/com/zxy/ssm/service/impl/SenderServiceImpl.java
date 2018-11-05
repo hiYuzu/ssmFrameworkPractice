@@ -10,25 +10,31 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *<p>
- *@Description: Sender操作服务类实现
- *</p>
- *@author hiYuzu
- *@date 2018/10/29 21:44
+ * <p>
+ *
+ * @author hiYuzu
+ * @Description: Sender操作服务类实现
+ * </p>
+ * @date 2018/10/29 21:44
  */
 @Service("senderService")
 @Transactional(rollbackFor = Exception.class)
 public class SenderServiceImpl implements ISenderService {
-	@Resource 
-	private ISenderDao senderDao;
-	
-	@Override
-	public int getCount() {
-		return senderDao.getCount();
-	}
-	
-	@Override
-	public List<Sender> getSenders() {
-		return senderDao.getSender();
-	}
- }
+    @Resource
+    private ISenderDao senderDao;
+
+    @Override
+    public int getCount() {
+        return senderDao.getCount();
+    }
+
+    @Override
+    public List<Sender> getSenders() {
+        return senderDao.getSender();
+    }
+
+    @Override
+    public int insertSender(Sender sender) throws Exception {
+        return senderDao.insertSender(sender);
+    }
+}

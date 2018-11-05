@@ -20,15 +20,15 @@ function sendMessage() {
     document.getElementById("messageForm").reset();
     var data = {"senderName": senderName, "senderTel": senderTel, "senderMsg": senderMsg};
     $.ajax({
-        url: "/SenderController/insertSenders",
+        url: "/SenderController/insertSender",
         type: "POST",
         data: data,
         dataType: "json",
         success: function (json) {
-            console.log("名字：" + senderName + "\n联系方式：" + senderTel + "\n留言内容：" + senderMsg);
-            alert("已收到您的信息，感谢！");
+            console.log(json.result);
+            alert(json.detail);
         }
     })
 }
 
-console.log("大鹏一日同风起,扶摇直上九万里");
+console.log("崽,阿爸对你很失望");

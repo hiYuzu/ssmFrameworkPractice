@@ -1,10 +1,11 @@
 package com.zxy.ssm.controller;
 
 import com.zxy.ssm.model.ResultListModel;
+import com.zxy.ssm.model.ResultModel;
 import com.zxy.ssm.model.SenderModel;
 import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.service.ISenderService;
-import org.apache.ibatis.annotations.Param;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,16 @@ import java.util.List;
 @Controller
 @RequestMapping("/SenderController")
 public class SenderController {
+    /**
+     * 日志输出标记
+     */
+    private static final String LOG = "SenderController";
+
+    /**
+     * 声明日志对象
+     */
+    private static Logger logger = Logger.getLogger(SenderController.class);
+
     /**
      * 声明服务
      */
@@ -74,7 +85,30 @@ public class SenderController {
      * @author hiYuzu
      * @date
      */
-    @RequestMapping(value = "/insertSenders", method = {RequestMethod.POST})
+    @RequestMapping(value = "/insertSender", method = {RequestMethod.POST})
+    public @ResponseBody
+    ResultModel insertSender(SenderModel senderModel) {
+        ResultModel resultModel = new ResultModel();
+        if (senderModel != null) {
+            try {
+                Sender sender = new Sender();
+                sender = convertSender(senderModel);
+                int result = senderService.insertSender(sender);
+                if (result > 0) {
+                    resultModel.setResult(true);
+                    resultModel.setDetail("发送成功!");
+                } else {
+                    resultModel.setResult(false);
+                    resultModel.setDetail("发送失败");
+                }
+            } catch (Exception e) {
+                resultModel.setResult(false);
+                resultModel.setDetail("发送失败");
+                logger.error(LOG + "新增区域失败,失败信息：" + e.getMessage());
+            }
+        }
+        return resultModel;
+    }
 
 
     /**
@@ -90,7 +124,6 @@ public class SenderController {
     private Sender convertSender(SenderModel senderModel) {
         Sender sender = new Sender();
         if (senderModel != null) {
-            sender.setSenderId(Integer.parseInt(senderModel.getSenderId()));
             sender.setSenderName(senderModel.getSenderName());
             sender.setSenderTel(senderModel.getSenderTel());
             sender.setSenderMsg(senderModel.getSenderMsg());
@@ -111,7 +144,6 @@ public class SenderController {
     private SenderModel convertSenderModel(Sender sender) {
         SenderModel senderModel = new SenderModel();
         if (sender != null) {
-            senderModel.setSenderId(String.valueOf(sender.getSenderId()));
             senderModel.setSenderName(sender.getSenderName());
             senderModel.setSenderTel(sender.getSenderTel());
             senderModel.setSenderMsg(sender.getSenderMsg());

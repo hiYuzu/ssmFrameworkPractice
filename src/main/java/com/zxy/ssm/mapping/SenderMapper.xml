@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zxy.ssm.dao.ISenderDao">
 
-	<resultMap type="com.zxy.ssm.pojo.Sender" id="senderResultMap">
-		<id property="senderId" column="sender_id" />
-		<result property="senderName" column="sender_name" />
-		<result property="senderTel" column="sender_tel" />
-		<result property="senderMsg" column="sender_msg" />
-	</resultMap>
-	<!-- 查询数据个数 -->
-	<select id="getCount" resultType="java.lang.Integer">
+    <resultMap type="com.zxy.ssm.pojo.Sender" id="senderResultMap">
+        <id property="senderId" column="sender_id"/>
+        <result property="senderName" column="sender_name"/>
+        <result property="senderTel" column="sender_tel"/>
+        <result property="senderMsg" column="sender_msg"/>
+    </resultMap>
+    <!-- 查询数据个数 -->
+    <select id="getCount" resultType="java.lang.Integer">
 		SELECT COUNT(0)
 		FROM tbl_sender
 	</select>
-	<!-- 查询Sender数据操作 -->
-	<select id="getSender" resultMap="senderResultMap">
+    <!-- 查询Sender数据操作 -->
+    <select id="getSender" resultMap="senderResultMap">
 		SELECT
 		sender_id,
 		sender_name,
@@ -23,4 +23,17 @@
 		sender_msg
 		FROM tbl_sender
 	</select>
+    <!-- 插入Sender信息 -->
+    <insert id="insertSender" parameterType="com.zxy.ssm.pojo.Sender">
+		insert into tbl_sender(
+		sender_name,
+		sender_tel,
+		sender_msg
+		)
+		values (
+		#{sender.senderName},
+		#{sender.senderTel},
+		#{sender.senderMsg}
+		)
+	</insert>
 </mapper>
