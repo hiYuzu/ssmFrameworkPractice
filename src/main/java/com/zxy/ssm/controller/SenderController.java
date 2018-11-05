@@ -5,7 +5,6 @@ import com.zxy.ssm.model.ResultModel;
 import com.zxy.ssm.model.SenderModel;
 import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.service.ISenderService;
-import jdk.nashorn.internal.runtime.Undefined;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
