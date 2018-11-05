@@ -10,40 +10,49 @@ package com.zxy.ssm.pojo;
  */
 
 public class Sender {
-	private int senderId;
-	private String senderName;
-	private String senderTel;
-	private String senderMsg;
+    private int senderId;
+    private String senderName;
+    private String senderTel;
+    private String senderMsg;
+    private String optTime;
 
-	public int getSenderId() {
-		return senderId;
-	}
+    public int getSenderId() {
+        return senderId;
+    }
 
-	public void setSenderId(int senderId) {
-		this.senderId = senderId;
-	}
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
+    }
 
-	public String getSenderName() {
-		return senderName;
-	}
+    public String getSenderName() {
+        return senderName;
+    }
 
-	public void setSenderName(String senderName) {
-		this.senderName = senderName;
-	}
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
+    }
 
-	public String getSenderTel() {
-		return senderTel;
-	}
+    public String getSenderTel() {
+        return senderTel;
+    }
 
-	public void setSenderTel(String senderTel) {
-		this.senderTel = senderTel;
-	}
+    public void setSenderTel(String senderTel) {
+        this.senderTel = senderTel;
+    }
 
-	public String getSenderMsg() {
-		return senderMsg;
-	}
+    public String getSenderMsg() {
+        return senderMsg;
+    }
 
-	public void setSenderMsg(String senderMsg) {
-		this.senderMsg = senderMsg;
-	}
+    public void setSenderMsg(String senderMsg) {
+        this.senderMsg = senderMsg;
+    }
+
+    public String getOptTime() {
+        return optTime;
+    }
+
+    public void setOptTime(String optTime) {
+        this.optTime = optTime;
+    }
 }

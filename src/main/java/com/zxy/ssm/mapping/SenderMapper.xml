@@ -8,6 +8,7 @@
         <result property="senderName" column="sender_name"/>
         <result property="senderTel" column="sender_tel"/>
         <result property="senderMsg" column="sender_msg"/>
+        <result property="optTime" column="opt_time"/>
     </resultMap>
     <!-- 查询数据个数 -->
     <select id="getCount" resultType="java.lang.Integer">
@@ -20,7 +21,8 @@
 		sender_id,
 		sender_name,
 		sender_tel,
-		sender_msg
+		sender_msg,
+		opt_time
 		FROM tbl_sender
 	</select>
     <!-- 插入Sender信息 -->
