@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html" charset="UTF-8">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+
+    <!--webFont-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
+          rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/static/js/sendMessage.js"></script>
+    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=z2VcOxCmzMMCuiYs0LPYDmRD"></script>-->
+
+    <title>MyResume</title>
+</head>
+<body>
+<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
+        type="text/javascript"></script>
+<br><br><br><br>
+<div class="contact-section text-center">
+    <div class="container">
+        <div class="contact-section-head">
+            <h3>联系</h3>
+            <label></label>
+            <p>留下你想对我说的话吧</p>
+        </div>
+        <div class="contact-info">
+            <ul>
+                <li><i class="message"></i></li>
+                <li><a href="mailto:pomelo.yuzu1997@gmail.com" target="_blank">pomelo.yuzu1997@gmail.com</a></li>
+                <li><i class="phone"></i></li>
+                <li>176-9598-2286</li>
+            </ul>
+            <form id="messageForm" accept-charset="UTF-8">
+                <input id="nameInput" type="text" class="text" value="你的名字"
+                       onfocus="if (this.value == '你的名字') this.value = '';"
+                       onblur="if (this.value == '') {this.value = '你的名字';}">
+                <input id="contactInput" type="text" class="text" value="你的联系方式"
+                       onfocus="if (this.value == '你的联系方式') this.value = '';"
+                       onblur="if (this.value == '') {this.value = '你的联系方式';}">
+                <textarea id="message" onfocus="if(this.value == '你的留言...') this.value='';"
+                          onblur="if(this.value == '') this.value='你的留言...';">你的留言...</textarea>
+                <input type="button" value="发送" onclick="sendMessage()">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
