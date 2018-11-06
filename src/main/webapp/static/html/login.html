@@ -3,12 +3,21 @@
 <head>
     <meta http-equiv="content-type" content="text/html" charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/base-style.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <title>登录</title>
 </head>
-<link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <body>
-<form id="loginForm">
+<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
+        type="text/javascript"></script>
+<form id="loginForm" class="center-center">
     <div class="form-group">
         <label for="userEmail">邮箱</label>
         <input type="email" class="form-control" id="userEmail" placeholder="邮箱">
@@ -22,8 +31,18 @@
             <input type="checkbox">记住我
         </label>
     </div>
-    <button type="button" class="btn btn-default" onclick="login()">登录</button>
+    <button id="loginBtn" type="button" class="btn btn-black" onclick="login()">登录</button>
 </form>
 </body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/login.js"></script>
+<script>
+    document.onkeydown = function (ev) {
+        var e = ev || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            $("#loginBtn").click();
+        }
+    }
+</script>
+
 </html>
