@@ -1,17 +1,10 @@
 /**
  *<p>
- *@Description: 获取信息
+ *@Description: 发送信息
  *</p>
  *@author ゆず
  *@date 2018/10/22 15:32
  */
-function downTest(mobileCode) {
-    if (mobileCode != null) {
-        var file = new File([mobileCode], "手机号.txt", {type: "text/plain;charset=utf-8"});
-        saveAs(file);
-    }
-}
-
 function sendMessage() {
     var senderName = document.getElementById("nameInput").value;
     var senderTel = document.getElementById("contactInput").value;
