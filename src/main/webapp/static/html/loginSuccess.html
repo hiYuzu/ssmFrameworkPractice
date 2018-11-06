@@ -3,13 +3,23 @@
 <head>
     <meta http-equiv="content-type" content="text/html" charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #0f0f0f;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/base-style.css">
+    <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <title>登录成功页面</title>
 </head>
-<link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <body>
-<button type="submit" class="btn btn-default" onclick="getMessage()">获取留言</button>
+<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
+        type="text/javascript"></script>
+<button type="submit" class="center-center btn btn-black btn-lg" onclick="getMessage()">获取留言</button>
 </body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script>
     function getMessage() {
         $.ajax({
