@@ -7,32 +7,25 @@
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #66ccff;
+            background-color: #0f0f0f;
         }
-
-        .center-in-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-        }
-
     </style>
+    <link rel="stylesheet" href="static/css/base-style.css">
     <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <title>Welcome</title>
 </head>
 <body>
-<button type="submit" class="center-in-center btn btn-info btn-lg" onclick="go()">我的简历</button>
-<button type="submit" class="center-in-center btn btn-info" onclick="login()">登录</button>
+<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
+        type="text/javascript">
+</script>
+<button type="submit" class="center-center btn btn-black btn-lg" onclick="go()">我的简历</button>
+<button type="submit" class="right-top btn btn-black" onclick="login()">登录</button>
 </body>
 <script type="text/javascript">
     function go() {
         window.location.href = "static/html/main.html";
     }
+
     function login() {
         window.location.href = "static/html/login.html";
     }
