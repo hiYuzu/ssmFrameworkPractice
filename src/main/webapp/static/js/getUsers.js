@@ -6,7 +6,7 @@
  *@date 2018/10/26 15:58
  */
 
-function getData() {
+function getUsers() {
     $.ajax({
         url: "/UserController/queryUsers",
         type: "get",
