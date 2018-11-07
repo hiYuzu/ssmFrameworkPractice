@@ -17,8 +17,14 @@
 <body>
 <script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
         type="text/javascript"></script>
-<button type="submit" class="center-center btn btn-black btn-lg" onclick="getMessage()">获取留言</button>
+<button type="button" class="center-center btn btn-black btn-lg" onclick="getMessage()">获取留言</button>
+<button type="button" class="right-top btn btn-black" onclick="returnHome()">主页</button>
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/loginSuccess.js"></script>
+<script>
+    function returnHome() {
+        window.location.href = "http://localhost:8080";
+    }
+</script>
 </html>
