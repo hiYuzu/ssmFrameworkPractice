@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import com.zxy.ssm.model.ResultModel;
 import org.apache.log4j.Logger;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/UserController")
 public class UserController {
+    private static final int VAIL_LOGIN = 9527;
     /**
      * 日志输出标记
      */
@@ -46,7 +48,7 @@ public class UserController {
     /**
      * <p>
      *
-     * @Description 登录验证
+     * @Description 登录
      * </p>
      * @author hiYuzu
      * @date 2018/11/5 10:12
@@ -54,7 +56,7 @@ public class UserController {
     @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
 
     public @ResponseBody
-    ResultModel loginUser(UserModel userModel) {
+    ResultModel loginUser(UserModel userModel, HttpSession session) {
         ResultModel resultModel = new ResultModel();
         if (userModel != null) {
             try {
@@ -62,17 +64,41 @@ public class UserController {
                 if (userModel.getUserPwd().equals(pwd)) {
                     resultModel.setResult(true);
                     resultModel.setDetail("登录成功");
+                    session.setAttribute("user", VAIL_LOGIN);
                 } else {
                     resultModel.setResult(false);
                     resultModel.setDetail("登录失败");
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
                 resultModel.setResult(false);
                 resultModel.setDetail("登录失败");
                 logger.error(LOG + "登录失败,失败信息：" + e.getMessage());
             }
         }
         return resultModel;
+    }
+
+    /**
+     * <p>
+     *
+     * @Description 登录验证
+     * </p>
+     * @author hiYuzu
+     * @date 2018/11/7 8:19
+     */
+    @RequestMapping(value = "/validLogin", method = {RequestMethod.GET})
+
+    public @ResponseBody
+    boolean validLogin(HttpSession session) {
+        if (session.getAttribute("user") != null){
+            if (Integer.parseInt(session.getAttribute("user").toString()) == VAIL_LOGIN) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 
     /**
