@@ -53,15 +53,4 @@
         </property>
     </bean>
 
-    <!-- JSP视图文件解析配置 -->
-    <bean
-            class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/static/html/" />
-        <property name="suffix" value=".html" />
-        <property name="viewNames" value="html/*" />
-        <property name="order" value="1" />
-    </bean>
-
 </beans>
