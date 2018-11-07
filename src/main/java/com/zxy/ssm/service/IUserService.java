@@ -40,12 +40,12 @@ public interface IUserService {
     /**
      * <p>
      *
-     * @param email
+     * @param user
      * @return
      * @Description: 查询user数据
      * </p>
      * @author hiYuzu
      * @date 2018/11/5 10:44
      */
-    String getPassword(String email);
+    String getPassword(User user);
 }

@@ -2,6 +2,7 @@ package com.zxy.ssm.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UnknownFormatConversionException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -59,8 +60,9 @@ public class UserController {
     ResultModel loginUser(UserModel userModel, HttpSession session) {
         ResultModel resultModel = new ResultModel();
         if (userModel != null) {
+            User user = convertUser(userModel);
             try {
-                String pwd = userService.getPassword(userModel.getUserEmail());
+                String pwd = userService.getPassword(user);
                 if (userModel.getUserPwd().equals(pwd)) {
                     resultModel.setResult(true);
                     resultModel.setDetail("登录成功");
@@ -147,10 +149,14 @@ public class UserController {
     private User convertUser(UserModel userModel) {
         User user = new User();
         if (userModel != null) {
-            user.setUserId(Integer.parseInt(userModel.getUserId()));
+            if (userModel.getUserId() != null) {
+                user.setUserId(Integer.parseInt(userModel.getUserId()));
+            }
             user.setUserName(userModel.getUserName());
             user.setUserSex(userModel.getUserSex());
-            user.setUserAge(Integer.parseInt(userModel.getUserAge()));
+            if (userModel.getUserAge() != null) {
+                user.setUserAge(Integer.parseInt(userModel.getUserAge()));
+            }
             user.setUserTel(userModel.getUserTel());
             user.setUserEmail(userModel.getUserEmail());
             user.setUserPwd(userModel.getUserPwd());
@@ -171,10 +177,14 @@ public class UserController {
     private UserModel convertUserModel(User user) {
         UserModel userModel = new UserModel();
         if (user != null) {
-            userModel.setUserId(String.valueOf(user.getUserId()));
+            if (user.getUserId() > 0) {
+                userModel.setUserId(String.valueOf(user.getUserId()));
+            }
             userModel.setUserName(user.getUserName());
             userModel.setUserSex(user.getUserSex());
-            userModel.setUserAge(String.valueOf(user.getUserAge()));
+            if (user.getUserAge() > 0) {
+                userModel.setUserAge(String.valueOf(user.getUserAge()));
+            }
             userModel.setUserTel(user.getUserTel());
             userModel.setUserEmail(user.getUserEmail());
             userModel.setUserPwd(user.getUserPwd());

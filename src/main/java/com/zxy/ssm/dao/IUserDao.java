@@ -3,7 +3,6 @@ package com.zxy.ssm.dao;
 import java.util.List;
 
 
-import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -42,12 +41,12 @@ public interface IUserDao {
     /**
      * <p>
      *
-     * @param email
+     * @param user
      * @return
      * @Description: 获取密码
      * </p>
      * @author hiYuzu
      * @data 2018/11/5 10:52
      */
-    String getPassword(@Param("email") String email);
+    String getPassword(@Param("user") User user);
 }

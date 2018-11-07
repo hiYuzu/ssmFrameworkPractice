@@ -36,7 +36,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public String getPassword(String email) {
-        return userDao.getPassword(email);
+    public String getPassword(User user) {
+        return userDao.getPassword(user);
     }
 }

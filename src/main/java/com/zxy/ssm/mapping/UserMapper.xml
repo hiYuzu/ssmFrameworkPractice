@@ -34,6 +34,15 @@
 		SELECT
 		user_pwd
 		FROM tbl_user
-		WHERE user_email = #{email}
+		WHERE 1=1
+		<if test="user.userName != null">
+			AND user_name = #{user.userName}
+		</if>
+		<if test="user.userTel != null">
+			AND user_tel = #{user.userTel}
+		</if>
+		<if test="user.userEmail != null">
+			AND user_email = #{user.userEmail}
+		</if>
 	</select>
 </mapper>
