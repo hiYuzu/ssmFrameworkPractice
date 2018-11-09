@@ -7,7 +7,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #0f0f0f;
+            background-color: #333;
         }
     </style>
     <link rel="stylesheet" href="/static/css/base-style.css">
@@ -26,14 +26,9 @@
         <label for="userPwd">密码</label>
         <input type="password" class="form-control" id="userPwd" placeholder="密码">
     </div>
-    <!--<div class="checkbox">-->
-        <!--<label>-->
-            <!--<input type="checkbox">记住我-->
-        <!--</label>-->
-    <!--</div>-->
     <button id="loginBtn" type="button" class="btn btn-black" onclick="login()">登录</button>
 </form>
-<button type="button" class="right-top btn btn-black" onclick="returnHome()">主页</button>
+<a href="../../index.html"><button type="button" class="right-top btn btn-black">主页</button></a>
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
 <script type="text/javascript" src="/static/js/login.js"></script>
@@ -43,10 +38,6 @@
         if (e && e.keyCode == 13) {
             $("#loginBtn").click();
         }
-    };
-
-    function returnHome() {
-        window.location.href = "http://localhost:8080";
     }
 </script>
 

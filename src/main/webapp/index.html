@@ -1,33 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/base-style.css">
+    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="static/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="static/css/cover.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style type="text/css">
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #0f0f0f;
+            background-color: #333;
         }
     </style>
-    <link rel="stylesheet" href="static/css/base-style.css">
-    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <title>Welcome</title>
 </head>
 <body>
-<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
+<script src="/static/js/canvas-nest.min.js" count="200" zindex="0" opacity="2" color="102,204,255"
         type="text/javascript">
 </script>
-<button type="submit" class="center-center btn btn-black btn-lg" onclick="go()">留言</button>
-<button type="submit" class="right-top btn btn-black" onclick="login()">登录</button>
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Welcome</h3>
+                    <nav>
+                        <ul class="nav masthead-nav">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="static/html/blog.html">Blog</a></li>
+                            <li><a href="static/html/message.html">Contact</a></li>
+                            <li><a href="static/html/login.html">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="inner cover">
+                <h1 class="cover-heading">Welcome To My Website</h1>
+                <p class="lead">This is a small website I built in my free time, where you can check my blog or leave a
+                    message to me.</p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-default">JUST DO IT</a>
+                </p>
+            </div>
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Cover template for <a href="http://getbootstrap.com/">Bootstrap</a>, by <a
+                            href="https://github.com/hiYuzu">@hiYuzu</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-<script type="text/javascript">
-    function go() {
-        window.location.href = "static/html/message.html";
-    }
-
-    function login() {
-        window.location.href = "static/html/login.html";
-    }
-</script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="static/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<script src="static/js/ie-emulation-modes-warning.js"></script>
 </html>
