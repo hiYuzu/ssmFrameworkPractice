@@ -6,6 +6,7 @@
  *@date 2018/11/5 9:57
  */
 function login() {
+    var mark;
     var data = {};
     var userCode = document.getElementById("userCode").value;
     var userPwd = document.getElementById("userPwd").value;
@@ -14,10 +15,13 @@ function login() {
     var phonePattern = /0?(13|14|15|18|17)[0-9]{9}/;
     if (emailPattern.test(userCode)) {
         data = {"userEmail": userCode, "userPwd": userPwd};
+        mark = "邮箱";
     } else if (phonePattern.test(userCode)) {
         data = {"userTel": userCode, "userPwd": userPwd};
+        mark = "电话";
     } else {
         data = {"userName": userCode, "userPwd": userPwd};
+        mark = "用户名";
     }
     $.ajax({
         url: "/UserController/loginUser",
@@ -28,7 +32,7 @@ function login() {
             if (json.result){
                 window.location.href = "loginSuccess.html";
             }else {
-                alert("邮箱或密码错误");
+                alert(mark + "或密码错误");
             }
         }
     });

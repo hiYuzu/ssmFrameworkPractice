@@ -21,7 +21,7 @@ $(function () {
         },
         error: function () {
             alert("错误");
-            window.location.href = "http://localhost:8080";
+            window.location.href = "../../index.html";
         }
     });
 });
