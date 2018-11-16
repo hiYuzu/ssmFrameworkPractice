@@ -22,5 +22,3 @@ function sendMessage() {
         }
     })
 }
-
-console.log("崽,阿爸对你很失望");

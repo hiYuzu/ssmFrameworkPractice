@@ -5,23 +5,14 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 
     <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link href="/static/css/message.css" rel="stylesheet" type="text/css"/>
-
-    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="/static/css/message.css">
+    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
     <!--webFont-->
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic'
-          rel='stylesheet' type='text/css'>
-    <script type="text/javascript" src="/static/js/sendMessage.js"></script>
-    <!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=z2VcOxCmzMMCuiYs0LPYDmRD"></script>-->
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic">
     <title>MyResume</title>
 </head>
 <body>
-<script src="/static/js/canvas-nest.min.js" count="200" zindex="-2" opacity="2" color="102,204,255"
-        type="text/javascript"></script>
-<br><br><br><br>
 <div class="contact-section text-center">
     <div class="container">
         <div class="contact-section-head">
@@ -31,9 +22,9 @@
         </div>
         <div class="contact-info">
             <ul>
-                <li><i class="message"></i></li>
+                <li><i class="fa fa-envelope fa-2x"></i></li>
                 <li><a href="mailto:pomelo.yuzu1997@gmail.com" target="_blank">pomelo.yuzu1997@gmail.com</a></li>
-                <li><i class="phone"></i></li>
+                <li><i class="fa fa-phone fa-2x"></i></li>
                 <li>176-9598-2286</li>
             </ul>
             <form id="messageForm" accept-charset="UTF-8">
@@ -46,10 +37,11 @@
                 <textarea id="message" onfocus="if(this.value == '你的留言...') this.value='';"
                           onblur="if(this.value == '') this.value='你的留言...';">你的留言...</textarea>
                 <input type="button" value="发送信息" onclick="sendMessage()">
-                <a href="../../index.html"><input type="button" value="返回主页"></a>
             </form>
         </div>
     </div>
 </div>
 </body>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/sendMessage.js"></script>
 </html>

@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-family: 'Roboto Slab', serif;
     background-color: #333;
+    height: 80%;
 }
 
 body a {
@@ -84,24 +85,6 @@ label {
 
 .contact-info ul li {
     display: inline-block;
-}
-
-i.message {
-    width: 70px;
-    height: 70px;
-    background: url("../images/img-sprite.png") no-repeat -6px -72px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 14px;
-}
-
-i.phone {
-    width: 70px;
-    height: 70px;
-    background: url("../images/img-sprite.png") no-repeat -94px -72px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 14px;
 }
 
 .contact-info ul li a {
