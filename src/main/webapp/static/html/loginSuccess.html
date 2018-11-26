@@ -5,18 +5,26 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
     <style type="text/css">
         body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #333;
+            height: 80%;
         }
     </style>
     <link rel="stylesheet" href="/static/css/base-style.css">
     <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/ie10-viewport-bug-workaround.css">
+    <link rel="stylesheet" href="/static/css/cover.css">
     <title>登录成功页面</title>
 </head>
 <body>
-<button type="button" class="center-center btn btn-black btn-lg" onclick="getMessage()">获取留言</button>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1 class="cover-heading">Welcome Back</h1>
+<p class="lead">In this page you can view message that others left.</p>
+<p class="lead">
+    <a href="javascript:void(0);" class="btn btn-lg btn-default" onclick="getMessage()">View Message</a>
+</p>
 </body>
 <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/static/js/ie10-viewport-bug-workaround.js"></script>
+<script src="/static/js/ie-emulation-modes-warning.js"></script>
 <script type="text/javascript" src="/static/js/loginSuccess.js"></script>
 </html>
