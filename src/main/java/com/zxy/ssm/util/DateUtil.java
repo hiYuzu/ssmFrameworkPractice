@@ -2,6 +2,7 @@ package com.zxy.ssm.util;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
+
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -196,12 +197,13 @@ public class DateUtil {
             return null;
         }
     }
+
     /**
      * 将字符串转换成时间戳
      * @param datetime
      * @return
      */
-    public static Timestamp stringToTimestampSecond(String datetime) {
+    public static Timestamp stringToTimestamp(String datetime) {
         try {
             if (datetime != null && !datetime.isEmpty()) {
                 SimpleDateFormat sdf = new SimpleDateFormat(DEFAULT_PATTERN);
@@ -217,12 +219,12 @@ public class DateUtil {
         }
     }
     /**
-     * 按指定参数将字符串转换成时间戳
+     * 将字符串转换成时间戳
      * @param datetime
      * @param format
      * @return
      */
-    public static Timestamp stringToTimestampFormat(String datetime,String format) {
+    public static Timestamp stringToTimestamp(String datetime,String format) {
         try {
             if (datetime != null && !datetime.isEmpty()) {
                 SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -244,7 +246,7 @@ public class DateUtil {
     public static Timestamp getSystemDateTime(String pattern) {
         Date date = new Date();
         String dateTime = format(date, pattern);
-        Timestamp timestamp = stringToTimestampSecond(dateTime);
+        Timestamp timestamp = stringToTimestamp(dateTime);
         return timestamp;
     }
     /**
@@ -252,7 +254,7 @@ public class DateUtil {
      */
     public static Timestamp dateToTimestamp(Date date) {
         String dateTime = format(date, DEFAULT_PATTERN);
-        Timestamp timestamp = stringToTimestampSecond(dateTime);
+        Timestamp timestamp = stringToTimestamp(dateTime);
         return timestamp;
     }
 
