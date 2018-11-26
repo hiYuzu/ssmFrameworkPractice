@@ -1,5 +1,7 @@
 package com.zxy.ssm.pojo;
 
+import com.zxy.ssm.util.DefaultArgument;
+
 /**
  * <p>
  *
@@ -10,19 +12,19 @@ package com.zxy.ssm.pojo;
  */
 
 public class User {
-	private int userId;
+	private Integer userId = DefaultArgument.INT_DEFAULT;
 	private String userName;
 	private String userSex;
-	private int userAge;
+	private Integer userAge = DefaultArgument.INT_DEFAULT;
 	private String userTel;
 	private String userEmail;
 	private String userPwd;
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

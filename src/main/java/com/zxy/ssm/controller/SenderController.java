@@ -91,7 +91,7 @@ public class SenderController {
         ResultModel resultModel = new ResultModel();
         if (senderModel != null) {
             try {
-                Sender sender = new Sender();
+                Sender sender;
                 sender = convertSender(senderModel);
                 int result = senderService.insertSender(sender);
                 if (result > 0) {
@@ -124,7 +124,7 @@ public class SenderController {
     private Sender convertSender(SenderModel senderModel) {
         Sender sender = new Sender();
         if (senderModel != null) {
-            if(sender.getSenderId() > 0){
+            if(senderModel.getSenderId() != null){
                 sender.setSenderId(Integer.parseInt(senderModel.getSenderId()));
             }
             sender.setSenderName(senderModel.getSenderName());

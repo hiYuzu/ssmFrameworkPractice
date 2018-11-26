@@ -1,5 +1,7 @@
 package com.zxy.ssm.pojo;
 
+import com.zxy.ssm.util.DefaultArgument;
+
 /**
  * <p>
  *
@@ -10,17 +12,17 @@ package com.zxy.ssm.pojo;
  */
 
 public class Sender {
-    private int senderId;
+    private Integer senderId = DefaultArgument.INT_DEFAULT;
     private String senderName;
     private String senderTel;
     private String senderMsg;
     private String optTime;
 
-    public int getSenderId() {
+    public Integer getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(int senderId) {
+    public void setSenderId(Integer senderId) {
         this.senderId = senderId;
     }
 
