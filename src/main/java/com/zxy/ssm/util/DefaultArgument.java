@@ -13,7 +13,14 @@ import java.util.Calendar;
  * @date 2018/11/26 14:18
  */
 public class DefaultArgument {
-
+    /**
+     * 默认用户名
+     */
+    public static final String LOGIN_USER = "loginUser";
+    /**
+     * 默认验证值
+     */
+    public static final int VAIL_LOGIN = 9527;
     /**
      * int默认值:-1
      */
@@ -26,22 +33,14 @@ public class DefaultArgument {
      * double默认值:-1
      */
     public static final double DOUBLE_DEFAULT = -1;
-
-    /**
-     * pwd默认值:111111
-     */
-    public static final String PWD_DEFAULT = "111111";
-
     /**
      * 删除标记默认值:false
      */
     public static final boolean DEL_DEFAULT = false;
-
     /**
      * 系统时间
      */
     public static Timestamp LOGIN_DATETIME = new Timestamp(Calendar.getInstance().getTimeInMillis());
-
     /**
      * 系统最底层级别
      */
