@@ -2,12 +2,12 @@ package com.zxy.ssm.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UnknownFormatConversionException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import com.zxy.ssm.model.ResultModel;
+import com.zxy.ssm.util.DefaultArgument;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +30,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/UserController")
 public class UserController {
-    private static final int VAIL_LOGIN = 9527;
     /**
      * 日志输出标记
      */
@@ -66,7 +65,7 @@ public class UserController {
                 if (userModel.getUserPwd().equals(pwd)) {
                     resultModel.setResult(true);
                     resultModel.setDetail("登录成功");
-                    session.setAttribute("user", VAIL_LOGIN);
+                    session.setAttribute(DefaultArgument.LOGIN_USER, DefaultArgument.VAIL_LOGIN);
                 } else {
                     resultModel.setResult(false);
                     resultModel.setDetail("登录失败");
@@ -92,12 +91,8 @@ public class UserController {
 
     public @ResponseBody
     boolean validLogin(HttpSession session) {
-        if (session.getAttribute("user") != null){
-            if (Integer.parseInt(session.getAttribute("user").toString()) == VAIL_LOGIN) {
-                return true;
-            } else {
-                return false;
-            }
+        if (session.getAttribute(DefaultArgument.LOGIN_USER) != null && Integer.parseInt(session.getAttribute(DefaultArgument.LOGIN_USER).toString()) == DefaultArgument.VAIL_LOGIN) {
+            return true;
         } else {
             return false;
         }
