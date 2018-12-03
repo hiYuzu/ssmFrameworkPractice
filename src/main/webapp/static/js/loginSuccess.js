@@ -6,26 +6,6 @@
  *@date 2018/11/7 8:47
  */
 
-$(function () {
-    $.ajax({
-        url: "/UserController/validLogin",
-        type: "get",
-        dataType: "json",
-        success: function (json) {
-            if (json) {
-                alert("登录成功");
-            } else {
-                alert("请先登录");
-                window.location.href = "login.html";
-            }
-        },
-        error: function () {
-            alert("错误");
-            window.location.href = "login.html";
-        }
-    });
-});
-
 function getMessage() {
     $.ajax({
         url: "/SenderController/querySenders",

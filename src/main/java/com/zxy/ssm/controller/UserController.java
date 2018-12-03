@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-
-import com.zxy.ssm.model.ResultModel;
-import com.zxy.ssm.util.DefaultArgument;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,47 +51,20 @@ public class UserController {
      */
     @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
 
-    public @ResponseBody
-    ResultModel loginUser(UserModel userModel, HttpSession session) {
-        ResultModel resultModel = new ResultModel();
+    public String loginUser(UserModel userModel) {
         if (userModel != null) {
             User user = convertUser(userModel);
             try {
                 String pwd = userService.getPassword(user);
                 if (userModel.getUserPwd().equals(pwd)) {
-                    resultModel.setResult(true);
-                    resultModel.setDetail("登录成功");
-                    session.setAttribute(DefaultArgument.LOGIN_USER, DefaultArgument.VAIL_LOGIN);
-                } else {
-                    resultModel.setResult(false);
-                    resultModel.setDetail("登录失败");
+                    return "/html/loginSuccess";
                 }
             } catch (Exception e) {
-                resultModel.setResult(false);
-                resultModel.setDetail("登录失败");
                 logger.error(LOG + "登录失败,失败信息：" + e.getMessage());
+                return "/html/login";
             }
         }
-        return resultModel;
-    }
-
-    /**
-     * <p>
-     *
-     * @Description 登录验证
-     * </p>
-     * @author hiYuzu
-     * @date 2018/11/7 8:19
-     */
-    @RequestMapping(value = "/validLogin", method = {RequestMethod.GET})
-
-    public @ResponseBody
-    boolean validLogin(HttpSession session) {
-        if (session.getAttribute(DefaultArgument.LOGIN_USER) != null && Integer.parseInt(session.getAttribute(DefaultArgument.LOGIN_USER).toString()) == DefaultArgument.VAIL_LOGIN) {
-            return true;
-        } else {
-            return false;
-        }
+        return "/html/login";
     }
 
     /**
@@ -186,4 +155,5 @@ public class UserController {
         }
         return userModel;
     }
+
 }
