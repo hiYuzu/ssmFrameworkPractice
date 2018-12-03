@@ -5,6 +5,7 @@ import com.zxy.ssm.model.ResultModel;
 import com.zxy.ssm.model.SenderModel;
 import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.service.ISenderService;
+import com.zxy.ssm.util.DateUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -131,7 +132,7 @@ public class SenderController {
             sender.setSenderTel(senderModel.getSenderTel());
             sender.setSenderMsg(senderModel.getSenderMsg());
             if(sender.getOptTime() != null){
-                sender.setOptTime(senderModel.getOptTime());
+                sender.setOptTime(DateUtil.stringToTimestamp(senderModel.getOptTime()));
             }
         }
         return sender;
@@ -157,7 +158,7 @@ public class SenderController {
             senderModel.setSenderTel(sender.getSenderTel());
             senderModel.setSenderMsg(sender.getSenderMsg());
             if(sender.getOptTime() != null){
-                senderModel.setOptTime(sender.getOptTime());
+                senderModel.setOptTime(DateUtil.timestampToString(sender.getOptTime()));
             }
         }
         return senderModel;

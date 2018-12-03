@@ -11,12 +11,11 @@ import com.zxy.ssm.util.DefaultArgument;
  * @date 2018/10/29 21:40
  */
 
-public class Sender {
+public class Sender extends BasePojo {
     private Integer senderId = DefaultArgument.INT_DEFAULT;
     private String senderName;
     private String senderTel;
     private String senderMsg;
-    private String optTime;
 
     public Integer getSenderId() {
         return senderId;
@@ -50,11 +49,4 @@ public class Sender {
         this.senderMsg = senderMsg;
     }
 
-    public String getOptTime() {
-        return optTime;
-    }
-
-    public void setOptTime(String optTime) {
-        this.optTime = optTime;
-    }
 }

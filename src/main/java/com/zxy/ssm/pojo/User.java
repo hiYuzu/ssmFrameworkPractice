@@ -1,6 +1,7 @@
 package com.zxy.ssm.pojo;
 
 import com.zxy.ssm.util.DefaultArgument;
+import org.codehaus.jackson.map.Serializers;
 
 /**
  * <p>
@@ -11,7 +12,7 @@ import com.zxy.ssm.util.DefaultArgument;
  * @date 2018/9/29 13:18
  */
 
-public class User {
+public class User extends BasePojo {
 	private Integer userId = DefaultArgument.INT_DEFAULT;
 	private String userName;
 	private String userSex;
