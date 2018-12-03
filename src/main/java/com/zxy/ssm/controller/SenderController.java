@@ -6,6 +6,7 @@ import com.zxy.ssm.model.SenderModel;
 import com.zxy.ssm.pojo.Sender;
 import com.zxy.ssm.service.ISenderService;
 import com.zxy.ssm.util.DateUtil;
+import com.zxy.ssm.util.DefaultArgument;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,10 +55,13 @@ public class SenderController {
      * @author hiYuzu
      * @date 2018/10/29 21:26
      */
-    @RequestMapping(value = "/querySenders", method = {RequestMethod.GET})
+    @RequestMapping(value = "/querySenders")
 
     public @ResponseBody
-    ResultListModel<SenderModel> querySenders() {
+    ResultListModel<SenderModel> querySenders(HttpSession session) {
+        if (session.getAttribute(DefaultArgument.LOGIN_USER) == null) {
+            return null;
+        }
         ResultListModel<SenderModel> resultListModel = new ResultListModel<SenderModel>();
         List<SenderModel> listSenderModel = new ArrayList<SenderModel>();
         List<Sender> listSender;

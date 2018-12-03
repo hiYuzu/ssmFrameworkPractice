@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import com.zxy.ssm.util.DefaultArgument;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,12 +54,13 @@ public class UserController {
      */
     @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
 
-    public String loginUser(UserModel userModel) {
+    public String loginUser(UserModel userModel, HttpSession session) {
         if (userModel != null) {
             User user = convertUser(userModel);
             try {
                 String pwd = userService.getPassword(user);
                 if (userModel.getUserPwd().equals(pwd)) {
+                    session.setAttribute(DefaultArgument.LOGIN_USER, DefaultArgument.VAIL_LOGIN);
                     return "/html/loginSuccess";
                 }
             } catch (Exception e) {

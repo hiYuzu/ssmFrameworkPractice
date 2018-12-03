@@ -119,3 +119,7 @@ js无法通过ajax获取后台数据
 页面控制交给springMVC
 
 增加基础实体类
+
+设置session有效时长15min
+
+查看留言请求需要通过session验证
