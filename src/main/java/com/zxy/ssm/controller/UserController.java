@@ -1,22 +1,18 @@
 package com.zxy.ssm.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import com.zxy.ssm.util.DefaultArgument;
+import com.zxy.ssm.util.EncodeUtil;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zxy.ssm.model.UserModel;
-import com.zxy.ssm.model.ResultListModel;
 import com.zxy.ssm.pojo.User;
 import com.zxy.ssm.service.IUserService;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -54,12 +50,13 @@ public class UserController {
      */
     @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
 
-    public String loginUser(UserModel userModel, HttpSession session) {
-        if (userModel != null) {
+    public String loginUser(UserModel userModel, HttpSession session) throws Exception {
+        if (userModel != null && userModel.getUserName() != null && userModel.getUserPwd() != null) {
+            userModel.setUserPwd(EncodeUtil.encode(userModel.getUserPwd()));
             User user = convertUser(userModel);
             try {
                 String pwd = userService.getPassword(user);
-                if (userModel.getUserPwd().equals(pwd)) {
+                if (user.getUserPwd().equals(pwd)) {
                     session.setAttribute(DefaultArgument.LOGIN_USER, DefaultArgument.VAIL_LOGIN);
                     return "/html/loginSuccess";
                 }
@@ -69,39 +66,6 @@ public class UserController {
             }
         }
         return "/html/login";
-    }
-
-    /**
-     * <p>
-     *
-     * @return
-     * @Description: 查询user信息
-     * </p>
-     * @author yuzu
-     * @date 2018/9/29 13:20
-     */
-    @RequestMapping(value = "/queryUsers", method = {RequestMethod.GET})
-
-    public @ResponseBody
-    ResultListModel<UserModel> queryUsers() {
-        ResultListModel<UserModel> resultListModel = new ResultListModel<UserModel>();
-        List<UserModel> listUserModel = new ArrayList<UserModel>();
-        List<User> listUser;
-        int count = userService.getCount();
-        if (count > 0) {
-            listUser = userService.getUsers();
-            for (User temp : listUser) {
-                UserModel userModel = convertUserModel(temp);
-                if (userModel != null) {
-                    listUserModel.add(userModel);
-                }
-            }
-            resultListModel.setRows(listUserModel);
-            resultListModel.setResult(true);
-            resultListModel.setDetail("success");
-        }
-        resultListModel.setTotal(count);
-        return resultListModel;
     }
 
     /**
@@ -130,34 +94,6 @@ public class UserController {
             user.setUserPwd(userModel.getUserPwd());
         }
         return user;
-    }
-
-    /**
-     * <p>
-     *
-     * @param user
-     * @return
-     * @Description: 将User转为UserModel
-     * </p>
-     * @author yuzu
-     * @date 2018/9/29 14:49
-     */
-    private UserModel convertUserModel(User user) {
-        UserModel userModel = new UserModel();
-        if (user != null) {
-            if (user.getUserId() > 0) {
-                userModel.setUserId(String.valueOf(user.getUserId()));
-            }
-            userModel.setUserName(user.getUserName());
-            userModel.setUserSex(user.getUserSex());
-            if (user.getUserAge() > 0) {
-                userModel.setUserAge(String.valueOf(user.getUserAge()));
-            }
-            userModel.setUserTel(user.getUserTel());
-            userModel.setUserEmail(user.getUserEmail());
-            userModel.setUserPwd(user.getUserPwd());
-        }
-        return userModel;
     }
 
 }
