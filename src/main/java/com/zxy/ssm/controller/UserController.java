@@ -1,11 +1,8 @@
 package com.zxy.ssm.controller;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-
-import com.zxy.ssm.util.DefaultArgument;
+import com.zxy.ssm.model.ResultModel;
 import com.zxy.ssm.util.EncodeUtil;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -13,6 +10,7 @@ import com.zxy.ssm.model.UserModel;
 import com.zxy.ssm.pojo.User;
 import com.zxy.ssm.service.IUserService;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -26,48 +24,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/UserController")
 public class UserController {
     /**
-     * 日志输出标记
-     */
-    private static final String LOG = "UserController";
-
-    /**
-     * 声明日志对象
-     */
-    private static Logger logger = Logger.getLogger(UserController.class);
-    /**
      * 声明服务
      */
     @Resource
     private IUserService userService;
 
-    /**
-     * <p>
-     *
-     * @Description 登录
-     * </p>
-     * @author hiYuzu
-     * @date 2018/11/5 10:12
-     */
-    @RequestMapping(value = "/loginUser", method = {RequestMethod.POST})
-
-    public String loginUser(UserModel userModel, HttpSession session) throws Exception {
-        if (userModel != null && userModel.getUserName() != null && userModel.getUserPwd() != null) {
+    @RequestMapping(value = "/signUp", method = {RequestMethod.POST})
+    public @ResponseBody
+    ResultModel signUp(UserModel userModel) throws Exception {
+        ResultModel resultModel = new ResultModel();
+        if (userModel != null && userModel.getUserName() != null && userModel.getUserTel() != null && userModel.getUserPwd() != null) {
             userModel.setUserPwd(EncodeUtil.encode(userModel.getUserPwd()));
             User user = convertUser(userModel);
-            try {
-                String pwd = userService.getPassword(user);
-                if (user.getUserPwd().equals(pwd)) {
-                    session.setAttribute(DefaultArgument.LOGIN_USER, DefaultArgument.VAIL_LOGIN);
-                    return "/html/loginSuccess";
-                }
-            } catch (Exception e) {
-                logger.error(LOG + "登录失败,失败信息：" + e.getMessage());
-                return "/html/login";
-            }
+            userService.insert(user);
+        } else {
+            resultModel.setResult(false);
+            resultModel.setDetail("注册所需信息不全!");
         }
-        return "/html/login";
+        return resultModel;
     }
-
     /**
      * <p>
      *
@@ -81,17 +56,18 @@ public class UserController {
     private User convertUser(UserModel userModel) {
         User user = new User();
         if (userModel != null) {
-            if (userModel.getUserId() != null) {
-                user.setUserId(Integer.parseInt(userModel.getUserId()));
+            if (userModel.getUserSex() != null) {
+                user.setUserSex(userModel.getUserSex());
             }
-            user.setUserName(userModel.getUserName());
-            user.setUserSex(userModel.getUserSex());
             if (userModel.getUserAge() != null) {
                 user.setUserAge(Integer.parseInt(userModel.getUserAge()));
             }
-            user.setUserTel(userModel.getUserTel());
-            user.setUserEmail(userModel.getUserEmail());
+            if (userModel.getUserEmail() != null) {
+                user.setUserEmail(userModel.getUserEmail());
+            }
+            user.setUserName(userModel.getUserName());
             user.setUserPwd(userModel.getUserPwd());
+            user.setUserTel(userModel.getUserTel());
         }
         return user;
     }

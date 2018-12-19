@@ -38,14 +38,23 @@ public interface IUserService {
     List<User> getUsers();
 
     /**
-     * <p>
-     *
+     * 查询密码
+     * @param userName
+     * @return
+     */
+    String getPassword(String userName);
+
+    /**
+     * 查询ID
+     * @param userName
+     * @return
+     */
+    int getUserId(String userName);
+
+    /**
+     * 新增用户信息(注册)
      * @param user
      * @return
-     * @Description: 查询user数据
-     * </p>
-     * @author hiYuzu
-     * @date 2018/11/5 10:44
      */
-    String getPassword(User user);
+    int insert(User user);
 }

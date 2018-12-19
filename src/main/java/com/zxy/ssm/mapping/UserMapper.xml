@@ -29,20 +29,54 @@
 		user_pwd
 		FROM tbl_user
 	</select>
-	<!-- 按邮箱查询密码 -->
+	<!-- 按用户名查询密码 -->
 	<select id="getPassword" resultType="java.lang.String">
 		SELECT
 		user_pwd
 		FROM tbl_user
-		WHERE 1=1
-		<if test="user.userName != null">
-			AND user_name = #{user.userName}
-		</if>
-		<if test="user.userTel != null">
-			AND user_tel = #{user.userTel}
-		</if>
-		<if test="user.userEmail != null">
-			AND user_email = #{user.userEmail}
+		<if test="userName != null">
+			WHERE user_name = #{userName}
 		</if>
 	</select>
+
+	<!-- 按用户名查询id -->
+	<select id="getUserId" resultType="java.lang.Integer">
+		SELECT
+		user_id
+		FROM tbl_user
+		<if test="userName != null">
+			WHERE user_name = #{userName}
+		</if>
+	</select>
+	
+	<insert id="insert" parameterType="com.zxy.ssm.pojo.User">
+		INSERT INTO tbl_user (
+		<if test="user.userSex != null">
+		user_sex,
+		</if>
+		<if test="user.userAge != null">
+		user_age,
+		</if>
+		<if test="user.userEmail != null">
+		user_email,
+		</if>
+		user_name,
+		user_tel,
+		user_pwd
+		)
+		VALUES(
+		<if test="user.userSex != null">
+			#{user.userSex},
+		</if>
+		<if test="user.userAge != null">
+			#{user.userAge},
+		</if>
+		<if test="user.userEmail != null">
+			#{user.userEmail},
+		</if>
+		#{user.userName},
+		#{user.userTel},
+		#{user.userPwd}
+		)
+	</insert>
 </mapper>

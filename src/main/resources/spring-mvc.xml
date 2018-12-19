@@ -38,7 +38,7 @@
             class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
         <property name="messageConverters">
             <list>
-                <ref bean="mappingJackson2HttpMessageConverter" />
+                <ref bean="mappingJackson2HttpMessageConverter"/>
             </list>
         </property>
     </bean>
@@ -57,5 +57,20 @@
         <property name="prefix" value="/static/"/>
         <property name="suffix" value=".html"/>
     </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/*/*"/>
+            <bean class="com.zxy.ssm.interceptor.SecurityInterceptor">
+                <property name="excludedUrls">
+                    <list>
+                        <value>/login</value>
+                        <value>/SenderController/insertSender</value>
+                        <value>/logout</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

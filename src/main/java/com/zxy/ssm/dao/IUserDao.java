@@ -39,14 +39,23 @@ public interface IUserDao {
     List<User> getUser();
 
     /**
-     * <p>
-     *
+     * 查询密码
+     * @param userName
+     * @return
+     */
+    String getPassword(@Param("userName") String userName);
+
+    /**
+     * 查询ID
+     * @param userName
+     * @return
+     */
+    int getUserId(@Param(value = "userName") String userName);
+
+    /**
+     * 新增用户信息(注册)
      * @param user
      * @return
-     * @Description: 获取密码
-     * </p>
-     * @author hiYuzu
-     * @data 2018/11/5 10:52
      */
-    String getPassword(@Param("user") User user);
+    int insert(@Param(value = "user") User user);
 }

@@ -10,21 +10,12 @@ package com.zxy.ssm.model;
  */
 
 public class UserModel {
-	private String userId;
 	private String userName;
 	private String userSex;
 	private String userAge;
 	private String userTel;
 	private String userEmail;
 	private String userPwd;
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
 	public String getUserName() {
 		return userName;
