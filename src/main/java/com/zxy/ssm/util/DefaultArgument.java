@@ -29,5 +29,5 @@ public class DefaultArgument {
      * 百度地图请求秘钥
      * @owner 天津七一二通信广播股份有限公司
      */
-    public static final String MAP_KEY = "AGl6mLfskQ2WZAD5dvD0Kls3mqsGBGcG";
+    public static final String MAP_KEY = "4IU3oIAMpZhfWZsMu7xzqBBAf6vMHcoa";
 }
