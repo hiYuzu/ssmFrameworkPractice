@@ -50,7 +50,16 @@ public class LoginController {
      * @throws Exception
      */
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
-    public String login(UserModel userModel, HttpSession session) throws Exception {
+    public String login(UserModel userModel, String vCode, HttpSession session) throws Exception {
+        Object object = session.getAttribute("_code");
+        if (object == null) {
+            return "/html/login";
+        }
+        String realVCode = object.toString();
+        if (!realVCode.equals(vCode.toLowerCase())) {
+            session.setAttribute("msg", "验证码错误!");
+            return "/html/login";
+        }
         if (userModel != null && userModel.getUserName() != null && userModel.getUserPwd() != null) {
             userModel.setUserPwd(EncodeUtil.encode(userModel.getUserPwd()));
             User user = convertUser(userModel);
@@ -70,6 +79,7 @@ public class LoginController {
 
     /**
      * 登出接口
+     *
      * @param session
      * @return
      */

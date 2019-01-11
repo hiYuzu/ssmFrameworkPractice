@@ -52,12 +52,18 @@
                             <div class="form-group">
                                 <label class="sr-only" for="userName">User</label>
                                 <input type="text" name="userName" placeholder="用户名..."
-                                       class="form-control" id="userName">
+                                       class="form-control" id="userName" required>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="userPwd">Password</label>
                                 <input type="password" name="userPwd" placeholder="密码..."
-                                       class="form-control" id="userPwd">
+                                       class="form-control" id="userPwd" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="vCode">验证码</label>
+                                <input type="text" name="vCode" placeholder="验证码..."
+                                       class="form-control" id="vCode" required>
+                                <img id="verificationImg" style="height: 29px;width: 120px;" alt="验证码" src="/getGifCode"/>
                             </div>
                             <input type="submit" class="btn btn-danger" value="Login now">
                         </form>
