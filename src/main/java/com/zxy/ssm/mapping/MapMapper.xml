@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxy.ssm.dao.IMapDao">
+
+    <resultMap type="com.zxy.ssm.pojo.Map" id="mapResultMap">
+        <id property="id" column="id"/>
+        <result property="deviceName" column="device_name"/>
+        <result property="lng" column="lng"/>
+        <result property="lat" column="lat"/>
+        <result property="temp" column="temp"/>
+        <result property="hum" column="hum"/>
+        <result property="acceleX" column="accele_x"/>
+        <result property="acceleY" column="accele_y"/>
+        <result property="acceleZ" column="accele_z"/>
+        <result property="optTime" column="opt_time"/>
+    </resultMap>
+    <select id="getMapData" resultMap="mapResultMap">
+        SELECT *
+        FROM tbl_map
+    </select>
+</mapper>

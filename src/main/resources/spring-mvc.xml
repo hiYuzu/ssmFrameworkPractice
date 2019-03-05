@@ -67,6 +67,7 @@
                         <value>/login</value>
                         <value>/SenderController/insertSender</value>
                         <value>/logout</value>
+                        <value>/MapController/*</value>
                     </list>
                 </property>
             </bean>

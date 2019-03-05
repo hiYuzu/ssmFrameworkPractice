@@ -49,6 +49,10 @@ public class LoginController {
      * @return
      * @throws Exception
      */
+    @RequestMapping(value = "/login", method = {RequestMethod.GET})
+    public String login() {
+        return "html/login";
+    }
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
     public String login(UserModel userModel, String vCode, HttpSession session) throws Exception {
         Object object = session.getAttribute("_code");
@@ -87,6 +91,15 @@ public class LoginController {
     public String logout(HttpSession session) {
         session.removeAttribute(DefaultArgument.LOGIN_USER);
         return "../index";
+    }
+
+    /**
+     * 地图跳转
+     * @return
+     */
+    @RequestMapping(value = "/goMap")
+    public String goMap() {
+        return "/html/myMap";
     }
 
     /**

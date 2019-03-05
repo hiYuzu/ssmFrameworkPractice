@@ -19,6 +19,10 @@ public class DefaultArgument {
      */
     public static final int INT_DEFAULT = -1;
     /**
+     * double默认值:0
+     */
+    public static final Double DOUBLE_DEFAULT = null;
+    /**
      * 和风天气(HeWeather)请求秘钥
      * @owner hiYuzu
      * @email pomelo.yuzu1997@gmail.com
