@@ -2,9 +2,11 @@
   <dictionary name="Administrator">
     <words>
       <w>accele</w>
+      <w>addr</w>
       <w>gmail</w>
       <w>gson</w>
       <w>introspector</w>
+      <w>navicat</w>
       <w>pomelo</w>
       <w>sqljdbc</w>
       <w>tagname</w>

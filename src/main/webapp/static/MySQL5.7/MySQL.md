@@ -1,5 +1,7 @@
 #MySQL转储文件说明
 
+（仅结构）
+
  >Navicat Premium Data Transfer
 
  >Source Server         : localhost
@@ -18,9 +20,9 @@
  
  >File Encoding         : 65001
 
- >Date: 19/12/2018 13:34:02
+ >Date: 12/03/2019 14:49:36
  
- 数据库test_sql (用户表,用户权限表,博客表,博客类型表,留言表)
+ 数据库test_sql (用户表,用户权限表,博客表,博客类型表,留言表,地图信息表,登录信息表)
  
  用户表(tbl_user)
  
@@ -31,4 +33,8 @@
  博客类型表(tbl_blog_type)
  
  留言表(tbl_sender)
+ 
+ 地图信息表(tbl_map)
+ 
+ 登录信息表(data_login)
  

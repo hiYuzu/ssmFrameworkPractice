@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zxy.ssm.dao.ILoginDao">
+
+    <insert id="insertLoginData">
+        INSERT INTO
+        data_login
+        (user_id, remote_addr, real_ip, opt_time) VALUES
+        (#{login.userId},
+        #{login.remoteAddr},
+        #{login.realIp},
+        #{login.optTime})
+    </insert>
+</mapper>

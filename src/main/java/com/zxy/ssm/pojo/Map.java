@@ -13,7 +13,7 @@ import java.util.Date;
  * @description
  * @date 2019/3/5 9:58
  */
-public class Map {
+public class Map extends BasePojo {
     private long id;
     private String deviceName;
     private Double lng = DefaultArgument.DOUBLE_DEFAULT;
@@ -23,7 +23,6 @@ public class Map {
     private Double acceleX = DefaultArgument.DOUBLE_DEFAULT;
     private Double acceleY = DefaultArgument.DOUBLE_DEFAULT;
     private Double acceleZ = DefaultArgument.DOUBLE_DEFAULT;
-    private Date optTime;
 
     public long getId() {
         return id;
@@ -97,11 +96,4 @@ public class Map {
         this.acceleZ = acceleZ;
     }
 
-    public Date getOptTime() {
-        return optTime;
-    }
-
-    public void setOptTime(Date optTime) {
-        this.optTime = optTime;
-    }
 }

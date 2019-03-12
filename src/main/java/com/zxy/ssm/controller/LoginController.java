@@ -1,7 +1,9 @@
 package com.zxy.ssm.controller;
 
 import com.zxy.ssm.model.UserModel;
+import com.zxy.ssm.pojo.Login;
 import com.zxy.ssm.pojo.User;
+import com.zxy.ssm.service.ILoginService;
 import com.zxy.ssm.service.IUserService;
 import com.zxy.ssm.util.DefaultArgument;
 import com.zxy.ssm.util.EncodeUtil;
@@ -11,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * <p>
@@ -30,6 +35,11 @@ public class LoginController {
      */
     @Resource
     private IUserService userService;
+    /**
+     * 声明登录信息记录服务
+     */
+    @Resource
+    private ILoginService loginService;
 
     /**
      * 日志输出标记
@@ -42,19 +52,25 @@ public class LoginController {
     private static Logger logger = Logger.getLogger(LoginController.class);
 
     /**
-     * 登录请求
-     *
-     * @param userModel
-     * @param session
+     * 登录请求get
      * @return
-     * @throws Exception
      */
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String login() {
         return "html/login";
     }
+
+    /**
+     * 登录请求post
+     * @param userModel
+     * @param vCode
+     * @param session
+     * @param request
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
-    public String login(UserModel userModel, String vCode, HttpSession session) throws Exception {
+    public String login(UserModel userModel, String vCode, HttpSession session, HttpServletRequest request) throws Exception {
         Object object = session.getAttribute("_code");
         if (object == null) {
             return "/html/login";
@@ -71,6 +87,7 @@ public class LoginController {
                 String pwd = userService.getPassword(user.getUserName());
                 if (user.getUserPwd().equals(pwd)) {
                     session.setAttribute(DefaultArgument.LOGIN_USER, userService.getUserId(user.getUserName()));
+                    insertLoginData(session, request);
                     return "/html/loginSuccess";
                 }
             } catch (Exception e) {
@@ -114,5 +131,40 @@ public class LoginController {
         user.setUserPwd(userModel.getUserPwd());
         user.setUserTel(userModel.getUserTel());
         return user;
+    }
+
+    private void insertLoginData(HttpSession session, HttpServletRequest request) {
+        Login login = new Login();
+        login.setUserId((Integer) session.getAttribute(DefaultArgument.LOGIN_USER));
+        //IP地址
+        login.setRemoteAddr(request.getRemoteAddr());
+        //真实IP地址
+        login.setRealIp(getClientIp(request));
+        loginService.insertLoginData(login);
+    }
+    /**
+     * 获取真实IP
+     * @param request
+     * @return
+     */
+    private String getClientIp(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        if (ip == null || ip.length() == 0 || ip.indexOf(":") > -1) {
+            try {
+                ip = InetAddress.getLocalHost().getHostAddress();
+            } catch (UnknownHostException e) {
+                ip = null;
+            }
+        }
+        return ip;
     }
 }
