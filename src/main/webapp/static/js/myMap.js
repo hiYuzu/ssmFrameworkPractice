@@ -8,7 +8,7 @@
  */
 var map;
 loadMap();
-addMarker();
+getMapData();
 
 function loadMap() {
     map = new BMap.Map("map", {enableMapClick: true});
@@ -27,7 +27,7 @@ function loadMap() {
 /**
  * 添加点
  */
-function addMarker() {
+function getMapData() {
     var url = "/MapController/getMapData";
     $.ajax({
         url: url,
@@ -38,34 +38,39 @@ function addMarker() {
                 var length = json.rows.length;
                 var pointView = [];
                 for (var i = 0; i < length; i++) {
-                    var data = json.rows[i];
-                    var point = new BMap.Point(data.lng, data.lat);
-                    var marker = new BMap.Marker(point);
-                    map.addOverlay(marker);
-                    var label = new BMap.Label(setLabelFuc(data), {offset: new BMap.Size(20, -10)});
-                    marker.setLabel(label); //添加标签
-                    label.setStyle({
-                        display: "none",
-                        maxWidth: "none",
-                        border: "0",
-                        zIndex: 1000000000
-                    });
-                    marker.addEventListener("mouseover", function () {
-                        label.setStyle({
-                            display: ""
-                        });
-                    });
-                    marker.addEventListener("mouseout", function() {
-                        label.setStyle({
-                            display: "none"
-                        });
-                    });
+                    var point = new BMap.Point(json.rows[i].lng, json.rows[i].lat);
+                    addMarker(json.rows[i], point);
                     pointView.push(point);
                 }
-                map.setViewPoint(pointView);
+                map.setViewPort(pointView);
             }
         }
     })
+}
+
+function addMarker(data, point) {
+    var marker = new BMap.Marker(new BMap.Point(point.lng, point.lat));
+    map.addOverlay(marker);
+
+    var label = new BMap.Label(setLabelFuc(data), {offset: new BMap.Size(20, -10)});
+    label.setStyle({
+        display: "none",
+        maxWidth: "none",
+        border: "0",
+        zIndex: 1000000000
+    });
+    marker.setLabel(label); //添加标签
+    marker.addEventListener("mouseover", function () {
+        label.setStyle({
+            display: ""
+        });
+    });
+    marker.addEventListener("mouseout", function () {
+        label.setStyle({
+            display: "none"
+        });
+    });
+
 }
 
 /**
@@ -74,21 +79,22 @@ function addMarker() {
  */
 function setLabelFuc(data) {
     var optTime = longToDate(data.optTime);
-    var str =  "<div style='background:#fbd023;padding:10px 15px;border:1px solid #fbd023;min-width: 200px;font-weight:bold;'>" +
+    return "<div style='background:#fbd023;padding:10px 15px;border:1px solid #fbd023;min-width: 200px;font-weight:bold;'>" +
         data.deviceName +
         "</div>" +
         "<div style='min-height: 60px;min-width: 200px;'>" +
         "<div style='padding:6px 15px;'>温度：" +
         data.temp +
+        "℃" +
         "</div>" +
         "<div  style='padding:6px 15px;'>湿度：" +
         data.hum +
+        "%" +
         "</div>" +
         "<div  style='padding:6px 15px;'>信息上传时间：" +
         optTime +
         "</div>" +
         "</div>";
-    return str;
 }
 
 function longToDate(optTime) {
