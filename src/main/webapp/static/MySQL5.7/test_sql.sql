@@ -11,7 +11,7 @@
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 12/03/2019 14:49:36
+ Date: 30/04/2019 11:30:58
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,22 @@ CREATE TABLE `data_login`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `fk_dl_ui`(`user_id`) USING BTREE,
   CONSTRAINT `fk_dl_ui` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of data_login
+-- ----------------------------
+INSERT INTO `data_login` VALUES (1, 1, '127.0.0.1', '127.0.0.1', '2019-03-12 14:31:49');
+INSERT INTO `data_login` VALUES (2, 1, '127.0.0.1', '127.0.0.1', '2019-03-12 14:32:37');
+INSERT INTO `data_login` VALUES (3, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 11:20:44');
+INSERT INTO `data_login` VALUES (4, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 11:21:09');
+INSERT INTO `data_login` VALUES (5, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 11:37:19');
+INSERT INTO `data_login` VALUES (6, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 11:52:43');
+INSERT INTO `data_login` VALUES (7, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 11:53:55');
+INSERT INTO `data_login` VALUES (8, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 14:01:22');
+INSERT INTO `data_login` VALUES (9, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 14:08:05');
+INSERT INTO `data_login` VALUES (10, 1, '127.0.0.1', '127.0.0.1', '2019-04-17 14:16:35');
+INSERT INTO `data_login` VALUES (11, 1, '127.0.0.1', '127.0.0.1', '2019-04-28 08:28:33');
 
 -- ----------------------------
 -- Table structure for tbl_blog
@@ -52,6 +67,11 @@ CREATE TABLE `tbl_blog`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tbl_blog
+-- ----------------------------
+INSERT INTO `tbl_blog` VALUES (1, 4, 1, '测试题目', '测试正文', '2018-12-19 08:19:11', '2018-12-19 08:19:14');
+
+-- ----------------------------
 -- Table structure for tbl_blog_type
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_blog_type`;
@@ -60,6 +80,15 @@ CREATE TABLE `tbl_blog_type`  (
   `type_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`type_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_blog_type
+-- ----------------------------
+INSERT INTO `tbl_blog_type` VALUES (1, '前台');
+INSERT INTO `tbl_blog_type` VALUES (2, '后台');
+INSERT INTO `tbl_blog_type` VALUES (3, '数据库');
+INSERT INTO `tbl_blog_type` VALUES (4, '笔记');
+INSERT INTO `tbl_blog_type` VALUES (5, '心得');
 
 -- ----------------------------
 -- Table structure for tbl_map
@@ -77,7 +106,18 @@ CREATE TABLE `tbl_map`  (
   `accele_z` double(6, 3) NULL DEFAULT NULL COMMENT 'z轴加速度',
   `opt_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '操作时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_map
+-- ----------------------------
+INSERT INTO `tbl_map` VALUES (1, '天津理工大学', 117.148000, 39.066000, 11, 64, 0.000, 0.000, 0.000, '2019-03-05 09:54:07');
+INSERT INTO `tbl_map` VALUES (2, '裕兴酒家1', 117.213199, 39.153417, 25, 53, 0.000, 0.000, 9.810, '2019-04-17 11:41:41');
+INSERT INTO `tbl_map` VALUES (3, '裕兴酒家2', 117.219726, 39.159348, 23, 52, 0.000, 0.000, 9.800, '2019-04-17 11:41:41');
+INSERT INTO `tbl_map` VALUES (4, '裕兴酒家3', 117.219630, 39.159319, 25, 53, 0.000, 0.000, 9.950, '2019-04-17 11:41:41');
+INSERT INTO `tbl_map` VALUES (5, '裕兴酒家4', 117.219866, 39.159386, 26, 55, 0.000, 0.000, 9.770, '2019-04-17 11:41:41');
+INSERT INTO `tbl_map` VALUES (6, '裕兴酒家5', 117.219759, 39.159323, 24, 54, 0.000, 0.000, 9.700, '2019-04-17 11:41:42');
+INSERT INTO `tbl_map` VALUES (7, '裕兴酒家6', 117.219893, 39.159377, 26, 52, 0.000, 0.000, 9.900, '2019-04-17 11:41:42');
 
 -- ----------------------------
 -- Table structure for tbl_sender
@@ -91,6 +131,30 @@ CREATE TABLE `tbl_sender`  (
   `opt_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`sender_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_sender
+-- ----------------------------
+INSERT INTO `tbl_sender` VALUES (1, '你的名字', '你的联系方式', '你的留言...', '2018-11-05 13:28:40');
+INSERT INTO `tbl_sender` VALUES (2, '你的名字', '你的联系方式', '你的留言...', '2018-11-05 13:28:43');
+INSERT INTO `tbl_sender` VALUES (3, '你的名字', '你的联系方式', '你的留言...', '2018-11-26 16:02:34');
+INSERT INTO `tbl_sender` VALUES (4, '你的名字', '你的联系方式', '你的留言...', '2018-11-26 16:02:24');
+INSERT INTO `tbl_sender` VALUES (5, '赵晓阳', '17695982286', '你好,我是赵晓阳', '2018-11-05 13:28:52');
+INSERT INTO `tbl_sender` VALUES (6, '18526877526', 'pomelo.yuzu1997@gmail.com', 'hello\nmy name is zhao\nthank you\ni love you\nbye~', '2018-11-05 13:28:56');
+INSERT INTO `tbl_sender` VALUES (7, '你的名字', '你的电话', '你好\n我是赵\n谢谢你\n再见', '2018-11-26 16:02:12');
+INSERT INTO `tbl_sender` VALUES (8, '你的名字', '你的联系方式', '你的留言...', '2018-11-05 13:29:04');
+INSERT INTO `tbl_sender` VALUES (9, '你的名字', '你的联系方式', '你的留言...', '2018-11-05 13:29:07');
+INSERT INTO `tbl_sender` VALUES (10, '你的名字', '你的联系方式', '你的留言...', '2018-11-05 11:42:08');
+INSERT INTO `tbl_sender` VALUES (11, '测试', 'pomelo.yuzu1997@gmail.com', '这是一条测试数据\n2018/11/7 9:05', '2018-11-07 09:08:44');
+INSERT INTO `tbl_sender` VALUES (13, 'zxy', '0536-7756368', 'this is a test data.\nthank you.', '2018-11-07 09:25:55');
+INSERT INTO `tbl_sender` VALUES (14, '1', '1', '1', '2018-11-07 09:49:52');
+INSERT INTO `tbl_sender` VALUES (15, '你的名字', '你的联系方式', '你的留言...', '2018-11-15 14:56:53');
+INSERT INTO `tbl_sender` VALUES (16, '赵晓阳', '20181116', 'test\nv18.11.16', '2018-11-16 16:04:29');
+INSERT INTO `tbl_sender` VALUES (17, '测试', '联系方式', '留言20181126', '2018-11-26 14:28:04');
+INSERT INTO `tbl_sender` VALUES (18, '你的名字', '你的联系方式', '你的留言...', '2018-12-03 14:57:08');
+INSERT INTO `tbl_sender` VALUES (19, '你的名字', '你的联系方式', '你的留言...', '2018-12-19 08:54:12');
+INSERT INTO `tbl_sender` VALUES (20, '你的名字', '你的联系方式', '你的留言...', '2018-12-19 09:07:20');
+INSERT INTO `tbl_sender` VALUES (21, '1', '1', '1', '2019-03-05 08:33:58');
 
 -- ----------------------------
 -- Table structure for tbl_user
@@ -112,6 +176,11 @@ CREATE TABLE `tbl_user`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of tbl_user
+-- ----------------------------
+INSERT INTO `tbl_user` VALUES (1, 1, 'pomelo', '男', 21, '17695982286', 'pomelo@163.com', 'a3a5fb13a9f9cae4971aac86b81ac2dd3712dd', '2018-12-19 08:05:18');
+
+-- ----------------------------
 -- Table structure for tbl_user_power
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_user_power`;
@@ -120,5 +189,11 @@ CREATE TABLE `tbl_user_power`  (
   `power_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`power_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of tbl_user_power
+-- ----------------------------
+INSERT INTO `tbl_user_power` VALUES (1, '管理员');
+INSERT INTO `tbl_user_power` VALUES (2, '普通用户');
 
 SET FOREIGN_KEY_CHECKS = 1;
